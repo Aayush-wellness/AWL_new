@@ -654,6 +654,7 @@ section {
   margin-right: 40px;
   position: relative;
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
