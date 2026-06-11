@@ -8,7 +8,7 @@ const slides = [
     radial: "rgba(160,100,60,.5)",
     emoji: "👨‍👩‍👧‍👦",
     title: "Combating malnutrition in underserved communities",
-    body: "Malnutrition remains one of India's most persistent and preventable health crises. Aayush Wellness addresses this through targeted nutritional supplement programmes and community food donation drives — delivering high-quality, science-backed nutrition to children and families in underserved regions where food security and health access remain critical challenges.",
+    body: "Malnutrition remains one of India's most persistent and preventable health crises. Aayush Wellness addresses this through targeted nutritional supplement programmes and community food donation drives - delivering high-quality, science-backed nutrition to children and families in underserved regions where food security and health access remain critical challenges.",
   },
   {
     bg: "linear-gradient(135deg,#1a2a1a 0%,#2a3a28 40%,#0e1a0e 100%)",
@@ -22,7 +22,7 @@ const slides = [
     radial: "rgba(60,60,120,.4)",
     emoji: "📚",
     title: "Health literacy & preventive awareness campaigns",
-    body: "Aayush Wellness drives grassroots health literacy initiatives that educate communities on preventive care, nutrition, and holistic well-being — shifting the healthcare conversation from reactive treatment to proactive lifestyle choices across every socioeconomic strata.",
+    body: "Aayush Wellness drives grassroots health literacy initiatives that educate communities on preventive care, nutrition, and holistic well-being - shifting the healthcare conversation from reactive treatment to proactive lifestyle choices across every socioeconomic strata.",
   },
 ];
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { AnimatedCounter } from "../ui/AnimatedCounter";
 
 export function AccHero() {
   return (
@@ -46,7 +47,8 @@ export function AccHero() {
       {/* Stats card */}
       <div className="acc-hero-stats">
         <div className="acc-stat-col">
-          <div className="acc-stat-value">₹5cr</div>
+          <div className="acc-stat-value"><AnimatedCounter target={5} suffix="cr" />
+          </div>
           <div className="acc-stat-label">
             Venture Capital<br />Fund
           </div>

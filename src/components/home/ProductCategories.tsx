@@ -156,7 +156,7 @@ export function ProductCategories() {
           <h2 className="products-title">Integrated Wellness Portfolio</h2>
           <p className="products-desc">
             We do not offer a single product or a single service. Aayush Wellness is a complete
-            preventive health platform — integrating nutraceuticals, herbal wellness, and accessible
+            preventive health platform - integrating nutraceuticals, herbal wellness, and accessible
             healthcare under one trusted brand.
           </p>
         </div>

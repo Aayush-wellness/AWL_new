@@ -12,7 +12,7 @@ export function AccQuote() {
           wellness solutions
         </p>
         <div className="acc-quote-author">
-          <div className="acc-quote-name">— Mr. Naveena Kumar</div>
+          <div className="acc-quote-name">- Mr. Naveena Kumar</div>
           <div className="acc-quote-role">Managing Director of Aayush Wellness Limited</div>
         </div>
       </div>

@@ -11,17 +11,17 @@ const items = [
   {
     title: "Sustainable packaging",
     emoji: "📦",
-    text: "We are progressively transitioning our packaging to eco-friendly, recyclable, and low-waste materials — reducing our environmental footprint without compromising the integrity or shelf life of our products.",
+    text: "We are progressively transitioning our packaging to eco-friendly, recyclable, and low-waste materials - reducing our environmental footprint without compromising the integrity or shelf life of our products.",
   },
   {
     title: "Clean formulation standards",
     emoji: "🔬",
-    text: "Our products are non-GMO, free from harmful additives, and manufactured in compliance with the highest quality benchmarks. What is good for people must also be good for the planet — our formulation philosophy reflects this without exception.",
+    text: "Our products are non-GMO, free from harmful additives, and manufactured in compliance with the highest quality benchmarks. What is good for people must also be good for the planet - our formulation philosophy reflects this without exception.",
   },
   {
     title: "Preserving traditional botanical knowledge",
     emoji: "🪴",
-    text: "We actively document, protect, and utilise centuries-old Ayurvedic and herbal knowledge — ensuring it is not lost to commercialisation, but rather preserved, validated by science, and made accessible to modern generations.",
+    text: "We actively document, protect, and utilise centuries-old Ayurvedic and herbal knowledge - ensuring it is not lost to commercialisation, but rather preserved, validated by science, and made accessible to modern generations.",
   },
 ];
 
@@ -71,7 +71,7 @@ export function SustainabilityApproach() {
 
             <div className="sus-accordion-body">
               <div className="sus-accordion-inner">
-                {/* spacer — hidden on mobile */}
+                {/* spacer - hidden on mobile */}
                 <div className="sus-accordion-spacer" />
                 <div className="sus-accordion-img">{item.emoji}</div>
                 <p className="sus-accordion-text">{item.text}</p>

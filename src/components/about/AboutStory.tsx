@@ -67,7 +67,7 @@ export function AboutStory() {
           <div className="timeline-left reveal reveal-left">
             <h3 className="tl-title">Listed on the Bombay Stock Exchange</h3>
             <p className="tl-body">
-              A defining milestone — Aayush Wellness Limited was listed on the BSE, establishing our commitment to
+              A defining milestone - Aayush Wellness Limited was listed on the BSE, establishing our commitment to
               transparency, accountability, and long-term value creation for shareholders.
             </p>
           </div>
@@ -87,7 +87,7 @@ export function AboutStory() {
             <h3 className="tl-title">A new vision takes shape</h3>
             <p className="tl-body">
               Under the leadership of Ms. Pallavi Mittal, who acquired a controlling stake, the company began a
-              strategic pivot — shifting its entire focus toward preventive healthcare and holistic wellness.
+              strategic pivot - shifting its entire focus toward preventive healthcare and holistic wellness.
               The vision was clear: make proactive health accessible to all.
             </p>
           </div>
@@ -99,7 +99,7 @@ export function AboutStory() {
             <h3 className="tl-title">Rebranded. Refocused.Reimagined.</h3>
             <p className="tl-body">
               The company was formally rebranded as Aayush Wellness Limited, consolidating its identity around
-              three pillars — Healthcare, Nutrition, and Wellness — and setting the stage for a new era of innovation.
+              three pillars - Healthcare, Nutrition, and Wellness - and setting the stage for a new era of innovation.
             </p>
           </div>
           <div className="timeline-center">
@@ -129,7 +129,7 @@ export function AboutStory() {
             <h3 className="tl-title">Nutraceuticals, herbal solutions &amp; beyond</h3>
             <p className="tl-body">
               The company launched a full range of science-backed nutraceuticals, herbal wellness products, and
-              AI-assisted health assessment tools — reaching over 100,000 customers across Tier 1 to Tier 4 cities nationwide.
+              AI-assisted health assessment tools - reaching over 100,000 customers across Tier 1 to Tier 4 cities nationwide.
             </p>
           </div>
           <div className="timeline-center">

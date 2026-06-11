@@ -18,7 +18,7 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "Accelerator — Aayush Wellness Limited",
+  title: "Accelerator - Aayush Wellness Limited",
   description:
     "Aayush Wellness Accelerator backs founders building at the intersection of health, science, and human impact with ₹5 Crore Venture & Growth Capital.",
 };

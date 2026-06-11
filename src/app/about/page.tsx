@@ -10,8 +10,8 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "About Us — Aayush Wellness Limited",
-  description: "Aayush Wellness Limited is a publicly listed preventive healthcare and wellness company — bridging ancient Ayurvedic wisdom with modern science to make proactive health a daily reality for every individual.",
+  title: "About Us - Aayush Wellness Limited",
+  description: "Aayush Wellness Limited is a publicly listed preventive healthcare and wellness company - bridging ancient Ayurvedic wisdom with modern science to make proactive health a daily reality for every individual.",
 };
 
 export default function AboutPage() {

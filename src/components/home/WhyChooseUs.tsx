@@ -15,7 +15,7 @@ export function WhyChooseUs() {
 
       <div className="why-grid">
 
-        {/* Card 1 — Lime, spans 2 rows, no bg image */}
+        {/* Card 1 - Lime, spans 2 rows, no bg image */}
         <div className="why-card why-card-lime reveal">
           <div className="why-card-inner">
             <h3 className="why-card-title">Ayurveda + Modern Nutrition</h3>
@@ -23,7 +23,7 @@ export function WhyChooseUs() {
           </div>
         </div>
 
-        {/* Card 2 — BSE building background image */}
+        {/* Card 2 - BSE building background image */}
         <div
           className="why-card why-card-bg reveal reveal-delay-1"
           style={{ backgroundImage: "url('/BSE-GettyImages-2158726341-copy.webp')" }}
@@ -35,7 +35,7 @@ export function WhyChooseUs() {
           </div>
         </div>
 
-        {/* Card 3 — White, 40+ stat */}
+        {/* Card 3 - White, 40+ stat */}
         <div className="why-card why-card-white reveal reveal-delay-2">
           <div className="why-card-inner">
             <div className="why-card-stat"><AnimatedCounter target={40} suffix="+" /></div>
@@ -44,7 +44,7 @@ export function WhyChooseUs() {
           </div>
         </div>
 
-        {/* Card 4 — White, Diversified */}
+        {/* Card 4 - White, Diversified */}
         <div className="why-card why-card-white reveal reveal-delay-3">
           <div className="why-card-inner">
             <h3 className="why-card-title">Diversified Wellness Portfolio</h3>
@@ -52,7 +52,7 @@ export function WhyChooseUs() {
           </div>
         </div>
 
-        {/* Card 5 — Growing card with video background */}
+        {/* Card 5 - Growing card with video background */}
         <div className="why-card why-card-teal reveal reveal-delay-4">
           {/* Background video */}
           <video

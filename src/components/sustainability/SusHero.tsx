@@ -34,7 +34,7 @@ export function SusHero() {
             </svg>
           </span>
           <p className="sus-hero-body">
-            At Aayush Wellness, impact is not a department — it is embedded in every product we formulate,
+            At Aayush Wellness, impact is not a department - it is embedded in every product we formulate,
             every partnership we build, and every community we serve. Our commitment extends well beyond
             wellness supplements; it encompasses the health of our society and the sustainability of our natural world.
           </p>

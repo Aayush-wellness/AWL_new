@@ -10,9 +10,9 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "Sustainability & Impact — Aayush Wellness Limited",
+  title: "Sustainability & Impact - Aayush Wellness Limited",
   description:
-    "At Aayush Wellness, impact is not a department — it is embedded in every product we formulate, every partnership we build, and every community we serve.",
+    "At Aayush Wellness, impact is not a department - it is embedded in every product we formulate, every partnership we build, and every community we serve.",
 };
 
 export default function SustainabilityPage() {

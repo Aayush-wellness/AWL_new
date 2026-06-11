@@ -61,7 +61,7 @@ function DotVisual() {
 
 // ─── Single press card ────────────────────────────────────────────────────────
 function PressCard({ item, position }: { item: PressItem; position: number }) {
-  // Card 1: col-1, spans 2 rows — image on top, text on bottom
+  // Card 1: col-1, spans 2 rows - image on top, text on bottom
   if (position === 0) {
     return (
       <div className="press-card press-card-featured">
@@ -86,7 +86,7 @@ function PressCard({ item, position }: { item: PressItem; position: number }) {
     );
   }
 
-  // Card 4 (position 3): horizontal card spanning cols 2-3 in row 2 — image left, text right
+  // Card 4 (position 3): horizontal card spanning cols 2-3 in row 2 - image left, text right
   if (position === 3) {
     return (
       <div className="press-card press-card-horizontal">
@@ -113,7 +113,7 @@ function PressCard({ item, position }: { item: PressItem; position: number }) {
     );
   }
 
-  // Cards 2, 3 — text only (position 1 & 2)
+  // Cards 2, 3 - text only (position 1 & 2)
   return (
     <div className="press-card press-card-text">
       <div className="press-card-body">
@@ -141,10 +141,10 @@ export function PressReleases() {
   const items = STATIC_PRESS_ITEMS;
 
   // Grid positions:
-  // [0] col-1 rows 1-2 — tall featured card (dot image top + text bottom)
-  // [1] col-2 row-1 — text card
-  // [2] col-3 row-1 — text card
-  // [3] cols 2-3 row-2 — horizontal card (dot image left | text right)
+  // [0] col-1 rows 1-2 - tall featured card (dot image top + text bottom)
+  // [1] col-2 row-1 - text card
+  // [2] col-3 row-1 - text card
+  // [3] cols 2-3 row-2 - horizontal card (dot image left | text right)
 
   return (
     <section id="news">

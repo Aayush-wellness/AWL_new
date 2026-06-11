@@ -8,7 +8,7 @@ export function Footer() {
         {/* Brand */}
         <div>
           <p className="footer-tagline">
-            Innovating preventive healthcare &amp; wellness — bridging ancient Ayurvedic wisdom with modern science since 1984.
+            Innovating preventive healthcare &amp; wellness - bridging ancient Ayurvedic wisdom with modern science since 1984.
           </p>
           <div className="footer-contact">
             <a href="tel:+918655980810" className="fc-item">

@@ -111,7 +111,7 @@ export function AboutVision() {
             <div className="vision-text">
               To create a world where health is defined by prevention, not just treatment.
               We envision empowering every individual with accessible healthcare, science-backed nutrition,
-              and holistic wellness solutions — bridging the gap between modern medicine and nature's wisdom
+              and holistic wellness solutions - bridging the gap between modern medicine and nature's wisdom
               to make proactive health a daily reality for all.
             </div>
           </div>
@@ -130,7 +130,7 @@ export function AboutVision() {
             <div className="purpose-text">
               To develop and deliver high-quality nutraceuticals, herbal wellness alternatives,
               and preventive healthcare services that support long-term well-being. Through rigorous
-              scientific research, uncompromising quality, and a people-first approach — we make
+              scientific research, uncompromising quality, and a people-first approach - we make
               wellness simple, effective, and accessible to everyone.
             </div>
           </div>

@@ -18,7 +18,7 @@ export function Geographic() {
         </div>
       </div>
 
-      {/* Map image placeholder — replace src with real image */}
+      {/* Map image placeholder - replace src with real image */}
       <div className="reach-map reveal">
         {/* <img src="/your-map-image.png" alt="Pan-India Map" className="reach-map-img" /> */}
       </div>

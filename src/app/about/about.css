@@ -162,46 +162,62 @@ body:has(.about-page) #navbar .nav-cta:hover {
   max-width: none;
   text-align: left;
   margin-left: 0;
+  margin-bottom: 80px;
   margin-right: auto;
   padding: 48px 100px;
 }
 
 .about-page .hero-title {
-  font-size: clamp(44px, 5.5vw, 72px);
+  color: var(--white, #FFF);
+  font-family: var(--font-display), "Inter Display", sans-serif;
+  font-size: 70px;
+  font-style: normal;
   font-weight: 600;
-  color: #fff;
-  line-height: 1.06;
-  letter-spacing: -.03em;
-  max-width: 600px;
+  line-height: 80px;
+  letter-spacing: -0.7px;
+  text-transform: capitalize;
+  max-width: 900px;
+  margin-left: 72px;
   opacity: 0;
   transform: translateY(40px);
   animation: fadeUpAbout 1s cubic-bezier(.16, 1, .3, 1) .35s forwards;
 }
 
-.about-page .hero-asterisk {
-  display: inline-block;
-  color: var(--lime);
-  font-size: 26px;
-  margin-right: 10px;
-  vertical-align: middle;
-  animation: spinAbout 8s linear infinite;
+.about-page .hero-body-wrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 36px;
+  max-width: 1100px;
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fadeUpAbout 1s cubic-bezier(.16, 1, .3, 1) .65s forwards;
 }
 
-@keyframes spinAbout {
+.about-page .hero-asterisk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: susSpin 8s linear infinite;
+}
+
+@keyframes susSpin {
   to {
     transform: rotate(360deg);
   }
 }
 
 .about-page .hero-body {
-  margin-top: 28px;
-  max-width: 580px;
-  font-size: 24px;
-  line-height: 1.75;
-  color: #fff;
-  opacity: 0;
-  transform: translateY(28px);
-  animation: fadeUpAbout 1s cubic-bezier(.16, 1, .3, 1) .65s forwards;
+  color: #FFF;
+  font-family: Manrope;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  letter-spacing: 0.4px;
+  max-width: 900px;
+  margin-top: 0;
 }
 
 @keyframes fadeUpAbout {
@@ -376,21 +392,25 @@ body:has(.about-page) #navbar .nav-cta:hover {
 }
 
 .about-page .tl-title {
-  font-size: 34px;
-  font-weight: 700;
-  color: #4f8b1d;
+  font-size: 38px;
+  font-weight: 600;
+  color: #68A22F;
   line-height: 1.25;
   text-align: center;
   margin-bottom: 12px;
   letter-spacing: -.01em;
+  text-align: start;
 }
 
 .about-page .tl-body {
+  color: #6B7280;
+  font-family: Manrope;
   font-size: 25px;
-  line-height: 1.75;
-  text-align: center;
-  max-width: 750px;
-  color: var(--text-body);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  text-align: start;
+  /* 40px */
 }
 
 /* ===== TEAL GRADIENT DIVIDER ===== */
@@ -560,10 +580,12 @@ body:has(.about-page) #navbar .nav-cta:hover {
 }
 
 .about-page .values-header {
-  margin-bottom: 64px;
-  display: flex;
-  gap: 80px;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 60px;
+  max-width: 1400px;
+  margin: 0 auto 64px auto;
+  align-items: start;
 }
 
 .about-page .values-tag {
@@ -572,37 +594,41 @@ body:has(.about-page) #navbar .nav-cta:hover {
   background: var(--black);
   color: #fff;
   border-radius: 50px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   flex-shrink: 0;
   height: fit-content;
 }
 
 .about-page .values-title {
-  font-size: clamp(32px, 4.5vw, 56px);
-  font-weight: 800;
+  font-family: var(--font-display), "Inter Display", sans-serif;
+  font-size: clamp(32px, 4.5vw, 62px);
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: start;
+  letter-spacing: -0.56px;
   color: var(--black);
-  line-height: 1.08;
-  letter-spacing: -.03em;
-  text-align: right;
-  max-width: 700px;
+  max-width: 100%;
+  margin: 0;
 }
 
 /* Big 2-col cards */
 .about-page .values-big-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-  margin-left: 5%;
-  margin-right: 5%;
+  gap: 24px;
+  max-width: 1700px;
+  background-color: #FFF;
+  border-radius: 20px;
+  padding: 40px;
+  margin: 0 auto 24px auto;
 }
 
 .about-page .value-card-big {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
-  min-height: 400px;
+  min-height: 520px;
   cursor: pointer;
   transition: transform .4s cubic-bezier(.16, 1, .3, 1);
 }
@@ -611,34 +637,18 @@ body:has(.about-page) #navbar .nav-cta:hover {
   transform: translateY(-4px);
 }
 
-/* Card 01 — dark teal lab */
+/* Card 01 — dark teal lab background image */
 .about-page .vc1 {
-  background: linear-gradient(145deg, #1a3a3a 0%, #0e2a2a 60%, #162e2e 100%);
+  background: linear-gradient(to bottom, rgba(30, 58, 58, 0.4) 0%, rgba(14, 42, 42, 0.85) 100%),
+    url('/assets/images/about/about-1.png') no-repeat center center;
+  background-size: cover;
 }
 
-.about-page .vc1::before {
-  content: '🔬';
-  position: absolute;
-  right: 10%;
-  top: 12%;
-  font-size: 160px;
-  opacity: .18;
-  filter: blur(2px);
-}
-
-/* Card 02 — light/muted runner */
+/* Card 02 — light/muted runner background image */
 .about-page .vc2 {
-  background: linear-gradient(145deg, #d8d8d4 0%, #c8c8c4 50%, #b8b8b4 100%);
-}
-
-.about-page .vc2::before {
-  content: '🏃';
-  position: absolute;
-  right: 8%;
-  top: 10%;
-  font-size: 180px;
-  opacity: .15;
-  filter: blur(1px);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.55) 100%),
+    url('/assets/images/about/about-2.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 .about-page .value-card-big .num-badge {
@@ -647,7 +657,7 @@ body:has(.about-page) #navbar .nav-cta:hover {
   left: 24px;
   width: 36px;
   height: 36px;
-  background: var(--lime);
+  background: #D4FF9E;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -662,20 +672,25 @@ body:has(.about-page) #navbar .nav-cta:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 32px;
-  background: linear-gradient(to top, rgba(0, 0, 0, .55) 0%, transparent 100%);
+  padding: 48px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .about-page .vc2 .value-card-content {
-  background: linear-gradient(to top, rgba(200, 200, 200, .6) 0%, transparent 100%);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.4) 60%, transparent 100%);
 }
 
 .about-page .vc-title {
-  font-size: 30px;
-  font-weight: 700;
+  font-family: var(--font-display), "Inter Display", sans-serif;
+  font-size: clamp(28px, 3vw, 30px);
+  font-weight: 500;
   color: #fff;
-  margin-bottom: 10px;
+  margin: 0;
   letter-spacing: -.01em;
+  margin-bottom: 20px;
 }
 
 .about-page .vc2 .vc-title {
@@ -683,31 +698,35 @@ body:has(.about-page) #navbar .nav-cta:hover {
 }
 
 .about-page .vc-body {
-  font-size: 20px;
-  margin-top: 5px;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, .8);
-  max-width: 380px;
+  font-family: var(--font-body), "Manrope", sans-serif;
+  font-size: clamp(16px, 1.8vw, 22px);
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 540px;
 }
 
 .about-page .vc2 .vc-body {
-  color: rgba(20, 20, 20, .75);
+  color: rgba(20, 20, 20, 0.8);
 }
 
 /* Small 3-col cards */
 .about-page .values-small-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-top: 5%
+  gap: 24px;
+  max-width: 1700px;
+  margin: 48px auto 0 auto;
 }
 
 .about-page .value-card-small {
   background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 20px;
-  padding: 32px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   transition: transform .4s cubic-bezier(.16, 1, .3, 1), box-shadow .4s;
 }
 
@@ -719,7 +738,7 @@ body:has(.about-page) #navbar .nav-cta:hover {
 .about-page .vs-num {
   width: 32px;
   height: 32px;
-  background: var(--lime);
+  background: #D4FF9E;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -727,21 +746,28 @@ body:has(.about-page) #navbar .nav-cta:hover {
   font-size: 12px;
   font-weight: 700;
   color: var(--black);
-  margin-bottom: 20px;
 }
 
 .about-page .vs-title {
+  color: #050505;
+  font-family: var(--font-display, "Inter Display");
   font-size: 30px;
-  font-weight: 600;
-  color: var(--black);
-  margin-bottom: px;
-  letter-spacing: -.01em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  /* 36px */
+  letter-spacing: -0.3px;
 }
 
 .about-page .vs-body {
-  font-size: 20px;
-  line-height: 1.7;
-  color: var(--text-body);
+  color: var(--PremiumGray1, #2B2B2B);
+  font-family: Manrope;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  /* 35.2px */
+  letter-spacing: -0.22px;
 }
 
 /* ===== RESPONSIVE ===== */

@@ -83,7 +83,7 @@ export function BuildingFuture() {
                 onClick={() => handleTabClick(item.id)}
               >
                 {isOpen ? (
-                  /* Open state: 2-col — title left, body right */
+                  /* Open state: 2-col - title left, body right */
                   <div className="beyond-item-open-row">
                     <span className="beyond-item-title">{item.title}</span>
                     <div className="beyond-item-body">

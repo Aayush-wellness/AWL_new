@@ -21,21 +21,21 @@ const ITEMS: AccordionItem[] = [
   },
   {
     title: "Sustainable packaging",
-    text: "We are progressively transitioning our packaging to eco-friendly, recyclable, and low-waste materials — reducing our environmental footprint without compromising the integrity or shelf life of our products.",
+    text: "We are progressively transitioning our packaging to eco-friendly, recyclable, and low-waste materials - reducing our environmental footprint without compromising the integrity or shelf life of our products.",
     emoji: "📦",
     imgSrc: "/assets/images/sustainability/packaging.jpg",
     imgAlt: "Eco-friendly packaging on conveyor",
   },
   {
     title: "Clean formulation standards",
-    text: "Our products are non-GMO, free from harmful additives, and manufactured in compliance with the highest quality benchmarks. What is good for people must also be good for the planet — our formulation philosophy reflects this without exception.",
+    text: "Our products are non-GMO, free from harmful additives, and manufactured in compliance with the highest quality benchmarks. What is good for people must also be good for the planet - our formulation philosophy reflects this without exception.",
     emoji: "🔬",
     imgSrc: "/assets/images/sustainability/formulation.jpg",
     imgAlt: "Scientist in clean laboratory",
   },
   {
     title: "Preserving traditional botanical knowledge",
-    text: "We actively document, protect, and utilise centuries-old Ayurvedic and herbal knowledge — ensuring it is not lost to commercialisation, but rather preserved, validated by science, and made accessible to modern generations.",
+    text: "We actively document, protect, and utilise centuries-old Ayurvedic and herbal knowledge - ensuring it is not lost to commercialisation, but rather preserved, validated by science, and made accessible to modern generations.",
     emoji: "🪴",
     imgSrc: "/assets/images/sustainability/botanical.jpg",
     imgAlt: "Ancient Ayurvedic herbs in sunlight",
@@ -98,7 +98,7 @@ export function SusApproach() {
               onMouseEnter={() => handleMouseEnter(idx)}
             >
               <div className="accordion-content">
-                {/* Title — always visible on the left */}
+                {/* Title - always visible on the left */}
                 <div className="accordion-title-col">
                   <span
                     className="accordion-title"
@@ -119,7 +119,7 @@ export function SusApproach() {
 
                 {/* Right side: image + text pushed to far right, arrow shown when collapsed */}
                 <div className="accordion-right">
-                  {/* Image — animates from 0×0 to full size on hover */}
+                  {/* Image - animates from 0×0 to full size on hover */}
                   <div className="accordion-media">
                     {item.imgSrc ? (
                       <Image
@@ -140,10 +140,10 @@ export function SusApproach() {
                     )}
                   </div>
 
-                  {/* Description — fades in on hover */}
+                  {/* Description - fades in on hover */}
                   <p className="accordion-desc">{item.text}</p>
 
-                  {/* Arrow — visible only when collapsed */}
+                  {/* Arrow - visible only when collapsed */}
                   <div className="accordion-arrow" aria-hidden="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 32 24" fill="none">
                       <path d="M11.7786 23.5573L13.9745 21.2979L6.01771 13.3411H31.25V10.2161H6.01771L13.9745 2.25938L11.7786 0L0 11.7786L11.7786 23.5573Z" fill="#E0E0E0" />

@@ -146,7 +146,7 @@
 
 .sustainability-page .sus-hero-title {
   color: var(--White, #FFF);
-  font-family: var(--font-inter), "Inter Display";
+  font-family: var(--font-display), "Inter Display", sans-serif;
   font-size: 70px;
   font-style: normal;
   font-weight: 600;
