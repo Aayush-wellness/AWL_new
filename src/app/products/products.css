@@ -271,19 +271,16 @@
   transform: scale(1.05);
 }
 
-/* Custom scale overrides for Herbal Masala & Shilajit Drops product images to compensate for large transparent padding in source files */
-.grid-herbal-masala .prod-actual-img,
-.grid-shilajit-drops .prod-actual-img {
+/* Custom scale overrides for Herbal Masala product images to compensate for large transparent padding in source files */
+.grid-herbal-masala .prod-actual-img {
   transform: scale(1.75);
 }
 
-.grid-herbal-masala .prod-card:hover .prod-actual-img,
-.grid-shilajit-drops .prod-card:hover .prod-actual-img {
+.grid-herbal-masala .prod-card:hover .prod-actual-img {
   transform: scale(1.82);
 }
 
-.grid-herbal-masala .prod-title,
-.grid-shilajit-drops .prod-title {
+.grid-herbal-masala .prod-title {
   margin-top: 30px;
 }
 
@@ -1359,4 +1356,177 @@ body.modal-open {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
   }
+}
+
+/* ==========================================================================
+   SHILAJIT DROPS - SINGLE CARD CENTERING & PLACEMENT
+   ========================================================================== */
+.products-cards-grid.grid-shilajit-drops {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100%;
+}
+
+.products-cards-grid.grid-shilajit-drops .prod-card {
+  max-width: 440px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   SHILAJIT DROPS - WHY DROPS BANNER
+   ========================================================================== */
+.shilajit-banner-sec {
+  margin-top: 100px;
+}
+
+.shilajit-banner-card {
+  background-color: var(--text-primary);
+  border-radius: 16px;
+  padding: 64px 48px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.shilajit-banner-title {
+  font-family: var(--font-display), 'Inter Display', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 48px;
+  color: #ffffff;
+}
+
+.shilajit-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+.shilajit-feature-card {
+  text-align: left;
+}
+
+.shilajit-feature-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.shilajit-checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--lime-accent);
+}
+
+.shilajit-feature-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  font-family: var(--font-display), 'Inter Display', sans-serif;
+}
+
+.shilajit-feature-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #9ca3af;
+  font-family: var(--font-body), 'Manrope', sans-serif;
+}
+
+.shilajit-ingredients-box {
+  border-top: 1.5px solid rgba(255, 255, 255, 0.12);
+  padding-top: 44px;
+}
+
+.shilajit-ingredients-header {
+  font-family: var(--font-body), 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #888884;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+
+.shilajit-ingredients-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.shilajit-ingredient-row {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #d1d5db;
+  font-family: var(--font-body), 'Manrope', sans-serif;
+}
+
+.shilajit-ingredient-name {
+  color: var(--lime-accent);
+  font-weight: 700;
+}
+
+.shilajit-ingredient-colon {
+  color: #ffffff;
+}
+
+.shilajit-ingredient-benefit {
+  color: #d1d5db;
+}
+
+/* Placeholder Gradient */
+.shilajit-gradient {
+  background: linear-gradient(135deg, #eedbc5, #c8a27b) !important;
+  color: #3b2f2f !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .shilajit-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .shilajit-banner-card {
+    padding: 32px 20px;
+    border-radius: 12px;
+  }
+  .shilajit-banner-title {
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+  .shilajit-features-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .shilajit-ingredients-box {
+    padding-top: 32px;
+  }
+  .shilajit-ingredients-header {
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+  .shilajit-ingredient-row {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+/* Static cards with no details popup */
+.prod-card.no-details {
+  cursor: default !important;
+}
+
+.prod-card.no-details:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.prod-card.no-details:hover .prod-actual-img {
+  transform: none !important;
 }

@@ -42,12 +42,14 @@ export const PRODUCTS_DATA: ProductTab[] = [
           "Supports healthy sleep routines",
           "Convenient and enjoyable daily gummy format"
         ],
-        consumerNeed: "Poor sleep quality has become a growing concern due to stress, screen exposure, demanding schedules, and changing lifestyles. Sleep Gummies are designed to help consumers build healthier nighttime routines and prioritize recovery as part of their overall wellness journey.",
+        consumerNeed: "Modern lifestyles, stress, and increased screen exposure have contributed to poor sleep quality and irregular sleep routines. Consumers are increasingly seeking convenient wellness solutions that support better rest and recovery.",
         ingredientsList: [
+          { name: "Brahmi Leaf Extract", image: "" },
+          { name: "Tagar Extract", image: "" },
+          { name: "L-Tryptophan", image: "" },
+          { name: "Chamomile Extract", image: "" },
           { name: "Melatonin", image: "" },
-          { name: "Chamomile", image: "" },
-          { name: "L-Theanine", image: "" },
-          { name: "Lemon Balm", image: "" }
+          { name: "Vitamin B6", image: "" }
         ],
         thumbnails: [
           "/assets/images/products/p_11.png",
@@ -66,11 +68,11 @@ export const PRODUCTS_DATA: ProductTab[] = [
           "Provides essential beauty-focused nutrients",
           "Easy-to-consume daily gummy format"
         ],
-        consumerNeed: "Beauty and wellness are increasingly converging as consumers seek convenient solutions that support appearance, confidence, and overall well-being. Beauty Gummies address this growing demand through a simple daily routine.",
+        consumerNeed: "Consumers today are looking for simple, daily solutions that support skin, hair, and nail wellness from within - reflecting the growing convergence of beauty and nutrition.",
         ingredientsList: [
-          { name: "Vitamin E", image: "" },
-          { name: "Zinc ", image: "" },
-          { name: "Silica ", image: "" },
+          { name: "Glutathione", image: "" },
+          { name: "Sea Buckthorn", image: "" },
+          { name: "Gotu Kola", image: "" },
           { name: "Hyaluronic Acid", image: "" },
           { name: "Biotin", image: "" },
           { name: "Vitamin C", image: "" },
@@ -95,19 +97,22 @@ export const PRODUCTS_DATA: ProductTab[] = [
         title: "Brain Fuel Capsules",
         image: "assets/images/products/suppliments/supp_1.png",
         keyBenefits: [
-          "Enhances focus, mental clarity, and memory retention",
-          "Supports daily cognitive function and energy",
-          "Helps reduce brain fatigue and stress"
+          "Supports memory & learning ability",
+          "Reduces mental fatigue & brain fog",
+          "Promotes calmness & stress balance",
+          "Improves mental clarity & alertness",
         ],
-        consumerNeed: "Professionals and students face high cognitive demands daily. Brain Fuel provides natural, stimulant-free support to sustain mental clarity and focus without jitters.",
+        consumerNeed: "As modern lifestyles become more demanding, consumers are seeking solutions that support focus, mental clarity, energy, and overall cognitive performance.",
         ingredientsList: [
-          { name: "Bacopa Monnieri", image: "" },
-          { name: "Withania Somnifera", image: "" },
-          { name: "Curcuma Longa", image: "" },
-          { name: "Gotu Kola Extract", image: "" },
-          { name: "Ginkgo Biloba Extract", image: "" },
+          { name: "Brahmi (Bacopa Monnieri)", image: "" },
+          { name: "Ashwagandha", image: "" },
+          { name: "Curcumin (Turmeric Extract)", image: "" },
+          { name: "Ginkgo Biloba", image: "" },
+          { name: "Gotu Kola", image: "" }
         ],
-        thumbnails: ["", "", ""]
+        thumbnails: ["/assets/images/products/suppliments/Brain_Fuel_listing1.webp",
+          "/assets/images/products/suppliments/Brain_Fuel_listing2.webp",
+          "/assets/images/products/suppliments/Brain_Fuel_listing3.webp"]
       },
       {
         id: "gut-fuel-capsules",
@@ -115,18 +120,22 @@ export const PRODUCTS_DATA: ProductTab[] = [
         title: "Gut Fuel Capsules",
         image: "assets/images/products/suppliments/supp_2.png",
         keyBenefits: [
-          "Supports healthy digestion and nutrient absorption",
-          "Helps maintain a balanced gut microbiome",
-          "Relieves occasional bloating and indigestion"
+          "Relieves bloating & gas discomfort",
+          "Promotes smooth & regular digestion",
+          "Strengthens immunity from within",
+          "Helps your body absorb nutrients better",
         ],
-        consumerNeed: "Digestive wellness is the foundation of overall health. Poor diet and stress disrupt gut flora; Gut Fuel provides natural support to restore balance and digestive ease.",
+        consumerNeed: "Digestive discomfort and poor gut health have become increasingly common, driving demand for products that support digestion, gut balance, and everyday wellness.",
         ingredientsList: [
           { name: "Probiotics", image: "" },
-          { name: "Triphala", image: "" },
-          { name: "Ginger Extract", image: "" },
-          { name: "Fennel Seeds", image: "" }
+          { name: "Prebiotics", image: "" },
+          { name: "Cranberry Extract", image: "" },
+          { name: "Vitamin C", image: "" },
+          { name: "Zinc", image: "" }
         ],
-        thumbnails: ["", "", ""]
+        thumbnails: ["/assets/images/products/suppliments/Gut_Fuel_listing1.webp",
+          "/assets/images/products/suppliments/Gut_Fuel_listing2.webp",
+          "/assets/images/products/suppliments/Gut_Fuel_listing3.webp"]
       },
       {
         id: "liver-detox-tablets",
@@ -134,37 +143,49 @@ export const PRODUCTS_DATA: ProductTab[] = [
         title: "Liver Detox Tablets",
         image: "assets/images/products/suppliments/supp_3.png",
         keyBenefits: [
-          "Promotes natural liver detoxification and cleansing",
-          "Supports healthy liver enzyme levels",
-          "Protects liver cells from oxidative stress"
+          "Supports healthy liver function daily",
+          "Reduces heaviness, acidity & sluggish feeling",
+          "Helps your body clear out everyday toxins naturally",
+          "Boosts energy & overall metabolic balance",
         ],
-        consumerNeed: "Exposure to toxins, processed foods, and alcohol stresses the liver. Consumers need a natural, daily formula to support detoxification and protect liver health.",
+        consumerNeed: "Busy lifestyles, dietary habits, and environmental factors have increased consumer interest in wellness solutions that support liver function and overall metabolic health.",
         ingredientsList: [
-          { name: "Milk Thistle", image: "" },
-          { name: "Bhumi Amla", image: "" },
-          { name: "Kalmegh", image: "" },
-          { name: "Kutki", image: "" }
+          { name: "Milk Thistle (Silymarin)", image: "" },
+          { name: "N-Acetyl L-Cysteine", image: "" },
+          { name: "Turmeric Extract", image: "" },
+          { name: "Alpha Lipoic Acid (ALA)", image: "" },
+          { name: "L-Glutamine", image: "" },
+          { name: "L-Carnitine", image: "" }
         ],
-        thumbnails: ["", "", ""]
+        thumbnails: ["/assets/images/products/suppliments/Liver_Detox_listing1.webp",
+          "/assets/images/products/suppliments/Liver_Detox_listing2.webp",
+          "/assets/images/products/suppliments/Liver_Detox_listing3.webp"]
       },
       {
         id: "respiratory-health",
-        subLabel: "LUNG CARE TABLETS",
-        title: "Respiratory Health",
+        subLabel: "Respiratory Health",
+        title: "Lung Care Tablets",
         image: "assets/images/products/suppliments/supp_4.png",
         keyBenefits: [
-          "Supports lung function and clear breathing",
-          "Helps soothe respiratory tracts",
-          "Strengthens seasonal respiratory immunity"
+          "Supports clear & open airways daily",
+          "Reduces chest heaviness & irritation",
+          "Helps clear mucus & airway buildup",
+          "Supports energy & daily stamina",
         ],
-        consumerNeed: "Environmental pollution and seasonal changes often trigger respiratory discomfort. This formula offers botanical defense to strengthen respiratory resilience.",
+        consumerNeed: "Increasing exposure to pollution, environmental stressors, and lifestyle factors has led to growing awareness around respiratory wellness and proactive lung health support.",
         ingredientsList: [
+          { name: "Stinging Nettle Root Extract", image: "" },
+          { name: "Shatavari Root Extract", image: "" },
+          { name: "Licorice", image: "" },
           { name: "Vasaka", image: "" },
-          { name: "Tulsi", image: "" },
-          { name: "Yashtimadhu", image: "" },
-          { name: "Pippali", image: "" }
+          { name: "NAC (N-Acetyl Cysteine)", image: "" },
+          { name: "Quercetin", image: "" },
+          { name: "Vitamin C", image: "" },
+          { name: "Zinc", image: "" }
         ],
-        thumbnails: ["", "", ""]
+        thumbnails: ["/assets/images/products/suppliments/Lung_Care_listing1.webp",
+          "/assets/images/products/suppliments/Lung_Care_listing2.webp",
+          "/assets/images/products/suppliments/Lung_Care_listing3.webp"]
       },
       {
         id: "immune-care-tablets",
@@ -172,18 +193,24 @@ export const PRODUCTS_DATA: ProductTab[] = [
         title: "Immune Care Tablets",
         image: "assets/images/products/suppliments/supp_5.png",
         keyBenefits: [
-          "Boosts daily immune system defenses",
-          "Packed with natural antioxidants",
-          "Promotes overall vitality and resilience"
+          "Supports your body’s natural immune defense",
+          "Helps protect against seasonal infections & daily exposure",
+          "Strengthens immunity with antioxidant-rich ingredients",
+          "Supports faster recovery & overall resilience",
         ],
-        consumerNeed: "Daily stress and environmental pathogens challenge the immune system. Immune Care provides proactive, science-backed support to strengthen natural defenses.",
+        consumerNeed: "Health-conscious consumers are prioritizing preventive wellness and looking for everyday solutions that support immune resilience and overall well-being.",
         ingredientsList: [
-          { name: "Giloy Extract", image: "" },
-          { name: "Amla Extract", image: "" },
-          { name: "Ashwagandha", image: "" },
-          { name: "Curcumin", image: "" }
+          { name: "Cone Flower", image: "" },
+          { name: "Elderberry", image: "" },
+          { name: "Rose Hip", image: "" },
+          { name: "Vitamin C", image: "" },
+          { name: "Mulethi", image: "" },
+          { name: "Ginger", image: "" },
+          { name: "Amla", image: "" }
         ],
-        thumbnails: ["", "", ""]
+        thumbnails: ["/assets/images/products/suppliments/immune_care_listing1.webp",
+          "/assets/images/products/suppliments/immune_care_listing2.webp",
+          "/assets/images/products/suppliments/immune_care_listing3.webp"]
       },
       {
         id: "dia-shield-tablets",
@@ -191,18 +218,21 @@ export const PRODUCTS_DATA: ProductTab[] = [
         title: "Dia Shield Tablets",
         image: "assets/images/products/suppliments/supp_6.png",
         keyBenefits: [
-          "Helps maintain healthy blood sugar levels",
-          "Supports healthy insulin function",
-          "Promotes healthy carbohydrate metabolism"
+          "Helps manage healthy blood sugar levels",
+          "Reduces sugar cravings & energy crashes",
+          "Supports metabolism & daily energy",
+          "Provides antioxidant support for overall balance",
         ],
-        consumerNeed: "Managing blood sugar is crucial for metabolic health. Dia Shield provides natural, botanical support to complement healthy lifestyle choices.",
+        consumerNeed: "The rising prevalence of lifestyle-related health concerns has increased awareness around proactive blood sugar management. Consumers are increasingly seeking wellness solutions that support healthier daily habits and metabolic well-being.",
         ingredientsList: [
           { name: "Karela", image: "" },
           { name: "Jamun Seeds", image: "" },
           { name: "Gurmar", image: "" },
           { name: "Vijaysar", image: "" }
         ],
-        thumbnails: ["", "", ""]
+        thumbnails: ["/assets/images/products/suppliments/Dia_Shield_listing1.webp",
+          "/assets/images/products/suppliments/Dia_Shield_listing2.webp",
+          "/assets/images/products/suppliments/Dia_Shield_listing3.webp"]
       },
       {
         id: "calcium-vitamins-tablets",
@@ -210,18 +240,21 @@ export const PRODUCTS_DATA: ProductTab[] = [
         title: "Calcium+ Vitamins Tablets",
         image: "assets/images/products/suppliments/supp_7.png",
         keyBenefits: [
-          "Supports bone density and joint strength",
-          "Enhances calcium absorption with Vitamin D3",
-          "Promotes joint mobility and comfort"
+          "Supports strong bones & teeth",
+          "Improves calcium absorption & bone density",
+          "Supports joint strength & mobility",
+          "Helps reduce weakness & supports daily energy",
         ],
-        consumerNeed: "Bone health declines with age and nutritional gaps. Calcium+ delivers highly bioavailable calcium and essential vitamins to support lifelong mobility.",
+        consumerNeed: "Modern dietary habits, sedentary lifestyles, and limited sun exposure have contributed to growing concerns around bone health and nutritional deficiencies. Consumers are increasingly prioritizing everyday nutritional support for long-term wellness.",
         ingredientsList: [
           { name: "Calcium Citrate", image: "" },
-          { name: "Vitamin D3", image: "" },
+          { name: "Zinc Sulphate", image: "" },
           { name: "Magnesium", image: "" },
-          { name: "Zinc", image: "" }
+          { name: "Vitamin B", image: "" }
         ],
-        thumbnails: ["", "", ""]
+        thumbnails: ["/assets/images/products/suppliments/CalciumVitamin_listing1.webp",
+          "/assets/images/products/suppliments/CalciumVitamin_listing2.webp",
+          "/assets/images/products/suppliments/CalciumVitamin_listing3.webp"]
       },
     ],
   },
@@ -265,30 +298,30 @@ export const PRODUCTS_DATA: ProductTab[] = [
   {
     id: "shilajit-drops",
     name: "Shilajit Drops",
-    sectionTitle: "The Himalayan Elixir for Peak Vitality.",
-    sectionSubtitle: "Aayush Shilajit Drops combine 100% pure, lab-tested Himalayan Shilajit extract with Ayurvedicwellness botanicals in a convenient liquid format. Powered by Fulvic Acid, this premium formulation enhances energy, stamina, cognitive function, and overall vitality—naturally and effectively.",
+    sectionTitle: "Ancient Vitality. Modern Convenience.",
+    sectionSubtitle: "A purified Himalayan Shilajit formulation designed to support daily energy, stamina, and overall vitality. A convenient liquid format rooted in traditional wellness and adapted for modern lifestyles.",
     products: [
       {
-        id: "paan-masala-flavour",
-        title: "Paan Masala Flavour",
-        description: "The timeless classic - rich, aromatic, and refreshing. The authentic pan masala experience, reimagined with complete herbal purity.",
-        image: "/assets/images/products/pan_masala_1.png",
-
-      },
-      {
-        id: "gutka-flavour",
-        title: "Gutka Flavour",
-        description: "Bold, familiar intensity - specifically designed for those transitioning away from harmful products. Delivers complete satisfaction with zero compromise on safety or well-being.",
-        image: "/assets/images/products/pan_masala_2.png",
-
-      },
-      {
-        id: "royal-tobacco-flavour",
-        title: "Royal Tobacco Flavour",
-        description: "A premium, full-bodied blend for the discerning palate. Rich depth and sophisticated character - authentically flavoured, completely tobacco-free.",
-        image: "/assets/images/products/pan_masala_3.png",
-
-      },
+        id: "himalayan-shilajit-drops",
+        subLabel: "ENERGY & STAMINA",
+        title: "Himalayan Shilajit Drops",
+        description: "Supports natural energy, endurance, and daily wellness with purified Himalayan Shilajit in an easy-to-use liquid format.",
+        image: "/assets/images/products/shilajit_1.png",
+        keyBenefits: [
+          "Supports natural energy, endurance, and daily wellness",
+          "Purified Himalayan Shilajit formulation",
+          "Convenient liquid format rooted in traditional wellness",
+          "Lab-tested for safety, purity, and potency"
+        ],
+        consumerNeed: "Modern life demands sustained energy and mental clarity. Our Shilajit Drops offer a convenient, highly bioavailable way to integrate this legendary Ayurvedic adaptogen into your daily routine, without the mess of traditional resins.",
+        ingredientsList: [
+          { name: "Purified Himalayan Shilajit", image: "" },
+          { name: "Fulvic Compounds", image: "" }
+        ],
+        thumbnails: [
+          "/assets/images/products/shilajit_1.png"
+        ]
+      }
     ],
   },
 ];

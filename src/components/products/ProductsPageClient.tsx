@@ -54,6 +54,21 @@ const MasalaPlaceholder = () => (
   </div>
 );
 
+// Shilajit Drops Dropper Bottle SVG Placeholder
+const ShilajitPlaceholder = () => (
+  <div className="prod-placeholder shilajit-gradient">
+    <div className="placeholder-visual">
+      <svg width="56" height="76" viewBox="0 0 56 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="14" y="24" width="28" height="44" rx="4" stroke="currentColor" strokeWidth="2.5" fill="none" />
+        <rect x="20" y="8" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="2.5" fill="none" />
+        <line x1="28" y1="24" x2="28" y2="60" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" />
+        <path d="M22 8C22 5 25 3 28 3C31 3 34 5 34 8" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+    </div>
+    <span className="placeholder-label">Shilajit Dropper</span>
+  </div>
+);
+
 export function ProductsPageClient() {
   const [activeTab, setActiveTab] = useState("wellness-gummies");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -220,6 +235,22 @@ export function ProductsPageClient() {
   // Helper to map ingredients to gorgeous matching mockup colors
   const getIngredientGradient = (name: string) => {
     const normName = name.toLowerCase();
+    if (normName.includes("prebiotic")) return "linear-gradient(135deg, #f0fdf4, #bbf7d0)";
+    if (normName.includes("cranberry")) return "linear-gradient(135deg, #ffe4e6, #fda4af)";
+    if (normName.includes("n-acetyl") || normName.includes("nac")) return "linear-gradient(135deg, #f3f4f6, #d1d5db)";
+    if (normName.includes("alpha lipoic") || normName.includes("ala")) return "linear-gradient(135deg, #fef3c7, #fde047)";
+    if (normName.includes("glutamine")) return "linear-gradient(135deg, #ecfdf5, #a7f3d0)";
+    if (normName.includes("carnitine")) return "linear-gradient(135deg, #e0f2fe, #bae6fd)";
+    if (normName.includes("nettle")) return "linear-gradient(135deg, #f0fdf4, #bbf7d0)";
+    if (normName.includes("shatavari")) return "linear-gradient(135deg, #fdf2f8, #fbcfe8)";
+    if (normName.includes("quercetin")) return "linear-gradient(135deg, #fef9c3, #fef08a)";
+    if (normName.includes("cone flower")) return "linear-gradient(135deg, #f5f3ff, #ddd6fe)";
+    if (normName.includes("elderberry")) return "linear-gradient(135deg, #faf5ff, #e9d5ff)";
+    if (normName.includes("rose hip")) return "linear-gradient(135deg, #fff1f2, #fecdd3)";
+    if (normName.includes("vitamin b")) return "linear-gradient(135deg, #fff7ed, #ffedd5)";
+    if (normName.includes("turmeric")) return "linear-gradient(135deg, #fef3c7, #fbbf24)";
+    if (normName.includes("shilajit")) return "linear-gradient(135deg, #eedbc5, #c8a27b)";
+    if (normName.includes("fulvic")) return "linear-gradient(135deg, #fef3c7, #fcd34d)";
     if (normName.includes("glutathione")) return "linear-gradient(135deg, #f5e6d3, #d7bfa6)";
     if (normName.includes("hyaluronic")) return "linear-gradient(135deg, #e0f2fe, #7dd3fc)";
     if (normName.includes("biotin")) return "linear-gradient(135deg, #fef3c7, #fcd34d)";
@@ -353,41 +384,19 @@ export function ProductsPageClient() {
           )}
         </div>
 
-        {/* Product Cards Grid or Coming Soon for Shilajit */}
-        {activeTab === "shilajit-drops" ? (
-          <div className="shilajit-coming-soon-container">
-            <div className="shilajit-coming-soon-card">
-              <div className="shilajit-glow-orb-1"></div>
-              <div className="shilajit-glow-orb-2"></div>
-              <div className="shilajit-badge">
-                <span className="shilajit-badge-dot"></span>
-                Himalayan Purity
-              </div>
-              <h3 className="shilajit-coming-soon-title">
-                Coming Soon
-              </h3>
-              <p className="shilajit-coming-soon-desc">
-                We are currently crafting our premium, lab-tested 100% pure Himalayan Shilajit Drops.
-                An elixir of peak vitality, strength, and cognitive performance is on its way.
-              </p>
-              <div className="shilajit-stay-tuned">
-                <div className="pulse-circle"></div>
-                <span>Stay Tuned</span>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className={`products-cards-grid grid-${activeTab}`}>
-            {currentTab.products.map((product) => {
-              const hasImage = product.image && product.image.trim() !== "";
-              const hasDetails = true;
-              return (
-                <div
-                  key={product.id}
-                  className="prod-card has-details"
-                  onClick={() => handleOpenDetails(product)}
-                >
-                  {/* Plus Icon Button in Top-Right */}
+        {/* Product Cards Grid */}
+        <div className={`products-cards-grid grid-${activeTab}`}>
+          {currentTab.products.map((product) => {
+            const hasImage = product.image && product.image.trim() !== "";
+            const hasDetails = activeTab !== "herbal-masala" && activeTab !== "shilajit-drops";
+            return (
+              <div
+                key={product.id}
+                className={`prod-card ${hasDetails ? "has-details" : "no-details"}`}
+                onClick={() => hasDetails && handleOpenDetails(product)}
+              >
+                {/* Plus Icon Button in Top-Right */}
+                {hasDetails && (
                   <button 
                     className="prod-plus-btn"
                     aria-label="View product details"
@@ -400,56 +409,126 @@ export function ProductsPageClient() {
                       <path d="M11.25 12.75H5.5V11.25H11.25V5.5H12.75V11.25H18.5V12.75H12.75V18.5H11.25V12.75Z" fill="#050505" />
                     </svg>
                   </button>
+                )}
 
-                  {/* Product Image Box */}
-                  <div className="prod-image-wrapper">
-                    {hasImage ? (
-                      <img src={product.image} alt={product.title} className="prod-actual-img" />
-                    ) : (
-                      <>
-                        {activeTab === "wellness-gummies" && <GummyPlaceholder />}
-                        {activeTab === "health-supplements" && <SupplementPlaceholder />}
-                        {activeTab === "herbal-masala" && <MasalaPlaceholder />}
-                      </>
-                    )}
-                  </div>
-
-                  {/* Product Card Details */}
-                  <div className="prod-info">
-                    {product.subLabel && (
-                      <span className="prod-sublabel">{product.subLabel}</span>
-                    )}
-                    <h3 className="prod-title">{product.title}</h3>
-                    {product.description && (
-                      <p className="prod-description">{product.description}</p>
-                    )}
-                  </div>
+                {/* Product Image Box */}
+                <div className="prod-image-wrapper">
+                  {hasImage ? (
+                    <img src={product.image} alt={product.title} className="prod-actual-img" />
+                  ) : (
+                    <>
+                      {activeTab === "wellness-gummies" && <GummyPlaceholder />}
+                      {activeTab === "health-supplements" && <SupplementPlaceholder />}
+                      {activeTab === "herbal-masala" && <MasalaPlaceholder />}
+                      {activeTab === "shilajit-drops" && <ShilajitPlaceholder />}
+                    </>
+                  )}
                 </div>
-              );
-            })}
-          </div>
-        )}
+
+                {/* Product Card Details */}
+                <div className="prod-info">
+                  {product.subLabel && (
+                    <span className="prod-sublabel">{product.subLabel}</span>
+                  )}
+                  <h3 className="prod-title">{product.title}</h3>
+                  {product.description && (
+                    <p className="prod-description">{product.description}</p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       {/* Conditionally Rendered Bottom Banners */}
 
-      {/* 1. Explore full range banner for Wellness Gummies Tab */}
-      <section className="gummies-banner-sec">
-        <div className="gummies-banner-card">
-          <div className="banner-left">
-            <h2 className="banner-title">Explore the full product range.</h2>
-            <p className="banner-desc">
-              All Aayush Wellness products are available directly through our online store - with
-              pan-India delivery and multiple format options to suit individual and institutional requirements.
-            </p>
+      {/* 1. Why Drops black banner for Shilajit Drops Tab */}
+      {activeTab === "shilajit-drops" && (
+        <section className="shilajit-banner-sec">
+          <div className="shilajit-banner-card">
+            <h2 className="shilajit-banner-title">Why Drops?</h2>
+            
+            <div className="shilajit-features-grid">
+              <div className="shilajit-feature-card">
+                <div className="shilajit-feature-header">
+                  <span className="shilajit-checkmark">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="#95D754" strokeWidth="2" fill="none"/>
+                      <path d="M8 12L11 15L16 9" stroke="#95D754" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <h3 className="shilajit-feature-title">Faster & More Convenient</h3>
+                </div>
+                <p className="shilajit-feature-desc">
+                  No mixing, measuring, or preparation required. Simply add the recommended serving and go.
+                </p>
+              </div>
+
+              <div className="shilajit-feature-card">
+                <div className="shilajit-feature-header">
+                  <span className="shilajit-checkmark">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="#95D754" strokeWidth="2" fill="none"/>
+                      <path d="M8 12L11 15L16 9" stroke="#95D754" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <h3 className="shilajit-feature-title">Easy Daily Consistency</h3>
+                </div>
+                <p className="shilajit-feature-desc">
+                  A simple liquid format makes it easier to build a regular wellness habit compared to traditional resins or powders.
+                </p>
+              </div>
+
+              <div className="shilajit-feature-card">
+                <div className="shilajit-feature-header">
+                  <span className="shilajit-checkmark">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="#95D754" strokeWidth="2" fill="none"/>
+                      <path d="M8 12L11 15L16 9" stroke="#95D754" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <h3 className="shilajit-feature-title">Portable & Travel-Friendly</h3>
+                </div>
+                <p className="shilajit-feature-desc">
+                  Compact and easy to carry, allowing wellness support wherever life takes you.
+                </p>
+              </div>
+
+              <div className="shilajit-feature-card">
+                <div className="shilajit-feature-header">
+                  <span className="shilajit-checkmark">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="#95D754" strokeWidth="2" fill="none"/>
+                      <path d="M8 12L11 15L16 9" stroke="#95D754" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  <h3 className="shilajit-feature-title">Flexible Consumption</h3>
+                </div>
+                <p className="shilajit-feature-desc">
+                  Can be taken directly or mixed with water, making it adaptable to individual preferences and routines.
+                </p>
+              </div>
+            </div>
+
+            <div className="shilajit-ingredients-box">
+              <h4 className="shilajit-ingredients-header">CRAFTED AROUND A SINGULAR POWERFUL INGREDIENT</h4>
+              <div className="shilajit-ingredients-details">
+                <div className="shilajit-ingredient-row">
+                  <span className="shilajit-ingredient-name">Purified Himalayan Shilajit</span>
+                  <span className="shilajit-ingredient-colon"> : </span>
+                  <span className="shilajit-ingredient-benefit">Traditionally used to support vitality, stamina, and overall wellness.</span>
+                </div>
+                <div className="shilajit-ingredient-row">
+                  <span className="shilajit-ingredient-name">Fulvic Compounds</span>
+                  <span className="shilajit-ingredient-colon"> : </span>
+                  <span className="shilajit-ingredient-benefit">Naturally occurring compounds that contribute to Shilajit's unique composition.</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="banner-right">
-            <Link href="https://store.aayushwellness.com/" className="banner-cta-btn">
-              Visit Our Store &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* 2. Key ingredients black banner for Herbal Masala Tab */}
       {activeTab === "herbal-masala" && (
@@ -493,6 +572,24 @@ export function ProductsPageClient() {
           </div>
         </section>
       )}
+
+      {/* 3. Explore full range banner for Wellness Gummies Tab */}
+      <section className="gummies-banner-sec">
+        <div className="gummies-banner-card">
+          <div className="banner-left">
+            <h2 className="banner-title">Explore the full product range.</h2>
+            <p className="banner-desc">
+              All Aayush Wellness products are available directly through our online store - with
+              pan-India delivery and multiple format options to suit individual and institutional requirements.
+            </p>
+          </div>
+          <div className="banner-right">
+            <Link href="https://store.aayushwellness.com/" className="banner-cta-btn">
+              Visit Our Store &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ==========================================================================
          PRODUCT DETAIL MODAL DIALOG
