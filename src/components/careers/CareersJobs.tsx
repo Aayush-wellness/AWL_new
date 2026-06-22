@@ -142,8 +142,33 @@ export function CareersJobs() {
 
   return (
     <section className="careers-jobs-section">
+      <div className="careers-coming-soon-container">
+        <div className="careers-coming-soon-card reveal">
+          <div className="careers-glow-orb-1"></div>
+          <div className="careers-glow-orb-2"></div>
+          <div className="careers-badge">
+            <span className="careers-badge-dot"></span>
+            Careers
+          </div>
+          <h2 className="careers-coming-soon-title">
+            Opportunities Coming Soon
+          </h2>
+          <p className="careers-coming-soon-desc">
+            We are currently structuring our growth teams and preparing new openings.
+            Stay tuned as we build the future of preventive healthcare and wellness.
+          </p>
+          <div className="careers-stay-tuned">
+            <div className="careers-pulse-circle"></div>
+            <span>Applications Opening Soon</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 
+      ==========================================================================
+      PREVIOUS CODE (COMMENTED OUT AS REQUESTED)
+      ==========================================================================
       <div className="careers-jobs-container">
-        {/* Left Column: Job Openings */}
         <div className="careers-jobs-left">
           <div className="careers-jobs-intro reveal">
             <h2 className="careers-jobs-heading">Current Openings</h2>
@@ -190,7 +215,6 @@ export function CareersJobs() {
               );
             })}
 
-            {/* Dotted border General Application Card */}
             <div
               className={`careers-job-card general-app-card ${
                 selectedJobId === "general" ? "selected" : ""
@@ -205,7 +229,6 @@ export function CareersJobs() {
           </div>
         </div>
 
-        {/* Right Column: Application Form */}
         <div className="careers-jobs-right reveal d1">
           <div className="careers-form-container">
             {isSubmitted ? (
@@ -223,7 +246,6 @@ export function CareersJobs() {
             ) : (
               <form onSubmit={handleSubmit} className="careers-form">
                 <div className="careers-form-grid">
-                  {/* Name */}
                   <div className="form-group">
                     <label htmlFor="fullName">Full Name <span className="required">*</span></label>
                     <input
@@ -238,7 +260,6 @@ export function CareersJobs() {
                     {errors.fullName && <span className="field-error">{errors.fullName}</span>}
                   </div>
 
-                  {/* Email */}
                   <div className="form-group">
                     <label htmlFor="email">Email Address <span className="required">*</span></label>
                     <input
@@ -253,7 +274,6 @@ export function CareersJobs() {
                     {errors.email && <span className="field-error">{errors.email}</span>}
                   </div>
 
-                  {/* Phone */}
                   <div className="form-group">
                     <label htmlFor="phone">Phone Number <span className="required">*</span></label>
                     <input
@@ -268,7 +288,6 @@ export function CareersJobs() {
                     {errors.phone && <span className="field-error">{errors.phone}</span>}
                   </div>
 
-                  {/* Location */}
                   <div className="form-group">
                     <label htmlFor="location">Current Location <span className="required">*</span></label>
                     <select
@@ -288,7 +307,6 @@ export function CareersJobs() {
                     {errors.location && <span className="field-error">{errors.location}</span>}
                   </div>
 
-                  {/* Position */}
                   <div className="form-group">
                     <label htmlFor="position">Position Interested In <span className="required">*</span></label>
                     <select
@@ -306,7 +324,6 @@ export function CareersJobs() {
                     {errors.position && <span className="field-error">{errors.position}</span>}
                   </div>
 
-                  {/* Experience */}
                   <div className="form-group">
                     <label htmlFor="experience">Years of Experience <span className="required">*</span></label>
                     <select
@@ -325,7 +342,6 @@ export function CareersJobs() {
                     {errors.experience && <span className="field-error">{errors.experience}</span>}
                   </div>
 
-                  {/* File Upload (Resume) */}
                   <div className="form-group full-width">
                     <label>Upload Resume / CV <span className="required">*</span></label>
                     <div 
@@ -355,7 +371,6 @@ export function CareersJobs() {
                     {errors.resume && <span className="field-error">{errors.resume}</span>}
                   </div>
 
-                  {/* Cover Note */}
                   <div className="form-group full-width">
                     <label htmlFor="coverNote">Cover Note <span className="optional">(Optional)</span></label>
                     <textarea
@@ -368,7 +383,6 @@ export function CareersJobs() {
                     />
                   </div>
 
-                  {/* Submit Button */}
                   <div className="form-group full-width">
                     <button type="submit" className="careers-submit-btn">
                       Submit Application
@@ -387,6 +401,7 @@ export function CareersJobs() {
           </div>
         </div>
       </div>
+      */}
     </section>
   );
 }
