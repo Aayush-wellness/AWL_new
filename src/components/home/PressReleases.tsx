@@ -22,7 +22,7 @@ const STATIC_PRESS_ITEMS: PressItem[] = [
     title: "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
     excerpt: "Maharashtra''s MCOCA Crackdown on illegal Gutkha Trade Creates Significant Growth Opportunity for Aayush Wellness''s Herbal Masala Business",
     date: "17-06-2026",
-    link: "/assets/images/press/pr_1.pdf",
+    link: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/pr_1.pdf?v=1782113451",
     hasImage: true,
   },
   {
@@ -31,7 +31,7 @@ const STATIC_PRESS_ITEMS: PressItem[] = [
     title: " Announcement under Regulation 30 (LODR)-Press Release / Media Release",
     excerpt: "Press release on Audited Financial Statements of the Company.",
     date: "29-05-2026",
-    link: "/assets/images/press/pr_2.pdf",
+    link: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/pr_2.pdf?v=1782113451",
     hasImage: false,
   },
   {
@@ -40,7 +40,7 @@ const STATIC_PRESS_ITEMS: PressItem[] = [
     title: " Announcement under Regulation 30 (LODR)-Press Release / Media Release",
     excerpt: "Aayush Wellness enters India''s Rs. 366 Billion Metabolic Health Market with Launch of Aayush Dia Shield Tablets",
     date: "08-05-2026",
-    link: "/assets/images/press/pr_3.pdf",
+    link: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/pr_3.pdf?v=1782113451",
     hasImage: false,
   },
   {
@@ -49,7 +49,7 @@ const STATIC_PRESS_ITEMS: PressItem[] = [
     title: "Announcement under Regulation 30 (LODR)-Press Release / Media Release.",
     excerpt: "Aayush Wellness Limited launches Liver Detox Tablets to capture growing demand in Preventive Wellness and Lifestyle Disease Management.",
     date: "24-04-2026",
-    link: "/assets/images/press/pr_4.pdf",
+    link: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/pr_4.pdf?v=1782113451",
     hasImage: true,
   },
 ];
@@ -135,6 +135,12 @@ function PressCard({ item, position }: { item: PressItem; position: number }) {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export function PressReleases() {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // TODO: Replace with API fetch:
   // const [items, setItems] = React.useState<PressItem[]>([]);
   // React.useEffect(() => { fetch('/api/press').then(r => r.json()).then(setItems); }, []);
@@ -166,17 +172,23 @@ export function PressReleases() {
 
       {/* 3-col 2-row grid */}
       <div className="news-grid">
-        {/* Col 1, rows 1-2: tall featured card */}
-        <PressCard item={items[0]} position={0} />
+        {mounted ? (
+          <>
+            {/* Col 1, rows 1-2: tall featured card */}
+            <PressCard item={items[0]} position={0} />
 
-        {/* Col 2, row 1: text card */}
-        <PressCard item={items[1]} position={1} />
+            {/* Col 2, row 1: text card */}
+            <PressCard item={items[1]} position={1} />
 
-        {/* Col 3, row 1: text card */}
-        <PressCard item={items[2]} position={2} />
+            {/* Col 3, row 1: text card */}
+            <PressCard item={items[2]} position={2} />
 
-        {/* Cols 2-3, row 2: single horizontal card (image left | text right) */}
-        <PressCard item={items[3]} position={3} />
+            {/* Cols 2-3, row 2: single horizontal card (image left | text right) */}
+            <PressCard item={items[3]} position={3} />
+          </>
+        ) : (
+          <div className="news-grid-placeholder" style={{ minHeight: "500px", gridColumn: "span 3" }} />
+        )}
       </div>
     </section>
   );
