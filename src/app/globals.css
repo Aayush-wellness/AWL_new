@@ -3317,12 +3317,22 @@ footer {
     line-height: 1.2 !important;
   }
 
+  .beyond-title {
+    color: #FFF;
+    font-family: Manrope;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 30px */
+    letter-spacing: -0.25px;
+  }
+
   .about-title,
   .products-title,
   .why-title,
-  .reach-title,
-  .beyond-title {
-    color: #FFF;
+  .reach-title {
+    color: #050505;
     font-family: Manrope;
     font-size: 25px;
     font-style: normal;
@@ -3345,10 +3355,19 @@ footer {
 
   .about-body,
   .products-desc,
-  .why-card-body,
-  .why-card p,
   .reach-body {
-    color: #FFF;
+    color: var(--PremiumGray1, #2B2B2B);
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    /* 19.2px */
+    letter-spacing: 0.167px;
+  }
+
+  .why-card-body,
+  .why-card p {
     font-family: Manrope;
     font-size: 14px;
     font-style: normal;
