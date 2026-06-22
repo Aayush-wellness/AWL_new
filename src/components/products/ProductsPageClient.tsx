@@ -178,12 +178,12 @@ export function ProductsPageClient() {
         ],
         consumerNeed: "Aayush Herbal Masala is a premium, tobacco-free and supari-free formulation - crafted with Ayurvedic botanicals to deliver an authentic, richly flavoured experience that actively supports oral health, digestion, and overall well-being. A genuinely intelligent alternative for millions choosing to make a mindful switch.",
         ingredientsList: [
-          { name: "Kaunch Beej", image: "" },
-          { name: "Amla", image: "" },
-          { name: "Ashwagandha", image: "" },
-          { name: "Mulethi", image: "" },
-          { name: "Kesar", image: "" },
-          { name: "Cardamom & Tamarind Seeds", image: "" }
+          { name: "Cardamom Extract", image: "" },
+          { name: "Fennel Seeds", image: "" },
+          { name: "Clove Extract", image: "" },
+          { name: "VLicorice Root", image: "" },
+          { name: "Mint Leaves", image: "" },
+          { name: "Areca Nut Substitute", image: "" }
         ],
         thumbnails: []
       };
@@ -231,9 +231,9 @@ export function ProductsPageClient() {
     if (normName.includes("theanine")) return "linear-gradient(135deg, #ecfdf5, #a7f3d0)";
     if (normName.includes("valerian")) return "linear-gradient(135deg, #f5f5f4, #d6d3d1)";
     if (normName.includes("lemon balm")) return "linear-gradient(135deg, #f0fdf4, #bbf7d0)";
-    if (normName.includes("brahmi")) return "linear-gradient(135deg, #dcfce7, #a7f3d0)";
+    if (normName.includes("brahmi") || normName.includes("bacopa")) return "linear-gradient(135deg, #dcfce7, #a7f3d0)";
     if (normName.includes("shankhpushpi")) return "linear-gradient(135deg, #e0f2fe, #93c5fd)";
-    if (normName.includes("ashwagandha")) return "linear-gradient(135deg, #fef3c7, #fcd34d)";
+    if (normName.includes("ashwagandha") || normName.includes("withania")) return "linear-gradient(135deg, #fef3c7, #fcd34d)";
     if (normName.includes("ginkgo")) return "linear-gradient(135deg, #ffedd5, #f59e0b)";
     if (normName.includes("probiotic")) return "linear-gradient(135deg, #ecfdf5, #34d399)";
     if (normName.includes("triphala")) return "linear-gradient(135deg, #f5e6d3, #b45309)";
@@ -249,7 +249,7 @@ export function ProductsPageClient() {
     if (normName.includes("pippali")) return "linear-gradient(135deg, #f5f5f4, #78716c)";
     if (normName.includes("giloy")) return "linear-gradient(135deg, #ecfdf5, #10b981)";
     if (normName.includes("amla")) return "linear-gradient(135deg, #dcfce7, #4ade80)";
-    if (normName.includes("curcumin")) return "linear-gradient(135deg, #fef3c7, #f59e0b)";
+    if (normName.includes("curcumin") || normName.includes("curcuma")) return "linear-gradient(135deg, #fef3c7, #f59e0b)";
     if (normName.includes("karela")) return "linear-gradient(135deg, #dcfce7, #15803d)";
     if (normName.includes("jamun")) return "linear-gradient(135deg, #f3e8ff, #c084fc)";
     if (normName.includes("gurmar")) return "linear-gradient(135deg, #f0fdf4, #86efac)";
@@ -257,11 +257,17 @@ export function ProductsPageClient() {
     if (normName.includes("calcium")) return "linear-gradient(135deg, #e0f2fe, #38bdf8)";
     if (normName.includes("vitamin d3")) return "linear-gradient(135deg, #fef3c7, #fcd34d)";
     if (normName.includes("magnesium")) return "linear-gradient(135deg, #f1f5f9, #cbd5e1)";
-    if (normName.includes("zinc")) return "linear-gradient(135deg, #f5f5f4, #d6d3d1)";
+    if (normName.includes("zinc")) return "linear-gradient(135deg, #faf5ff, #d8b4fe)";
+    if (normName.includes("vitamin e")) return "linear-gradient(135deg, #ffe4e6, #fecdd3)";
+    if (normName.includes("silica")) return "linear-gradient(135deg, #e0f2fe, #a5f3fc)";
     if (normName.includes("kaunch beej")) return "linear-gradient(135deg, #e0e7ff, #a5b4fc)";
     if (normName.includes("mulethi")) return "linear-gradient(135deg, #fefce8, #fde047)";
     if (normName.includes("kesar")) return "linear-gradient(135deg, #ffe7d5, #f97316)";
     if (normName.includes("cardamom")) return "linear-gradient(135deg, #dcfce7, #86efac)";
+    if (normName.includes("clove")) return "linear-gradient(135deg, #fed7aa, #ea580c)";
+    if (normName.includes("licorice") || normName.includes("vlicorice")) return "linear-gradient(135deg, #fef9c3, #facc15)";
+    if (normName.includes("mint")) return "linear-gradient(135deg, #ecfdf5, #10b981)";
+    if (normName.includes("areca") || normName.includes("substitute")) return "linear-gradient(135deg, #e0f2fe, #6366f1)";
 
     return "linear-gradient(135deg, #f3f4f6, #e5e7eb)";
   };
@@ -347,58 +353,82 @@ export function ProductsPageClient() {
           )}
         </div>
 
-        {/* Product Cards Grid */}
-        <div className={`products-cards-grid grid-${activeTab}`}>
-          {currentTab.products.map((product) => {
-            const hasImage = product.image && product.image.trim() !== "";
-            const hasDetails = true;
-            return (
-              <div
-                key={product.id}
-                className="prod-card has-details"
-                onClick={() => handleOpenDetails(product)}
-              >
-                {/* Plus Icon Button in Top-Right */}
-                <button
-                  className="prod-plus-btn"
-                  aria-label="View product details"
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent card container onClick triggering twice
-                    handleOpenDetails(product);
-                  }}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M11.25 12.75H5.5V11.25H11.25V5.5H12.75V11.25H18.5V12.75H12.75V18.5H11.25V12.75Z" fill="#050505" />
-                  </svg>
-                </button>
-
-                {/* Product Image Box */}
-                <div className="prod-image-wrapper">
-                  {hasImage ? (
-                    <img src={product.image} alt={product.title} className="prod-actual-img" />
-                  ) : (
-                    <>
-                      {activeTab === "wellness-gummies" && <GummyPlaceholder />}
-                      {activeTab === "health-supplements" && <SupplementPlaceholder />}
-                      {activeTab === "herbal-masala" && <MasalaPlaceholder />}
-                    </>
-                  )}
-                </div>
-
-                {/* Product Card Details */}
-                <div className="prod-info">
-                  {product.subLabel && (
-                    <span className="prod-sublabel">{product.subLabel}</span>
-                  )}
-                  <h3 className="prod-title">{product.title}</h3>
-                  {product.description && (
-                    <p className="prod-description">{product.description}</p>
-                  )}
-                </div>
+        {/* Product Cards Grid or Coming Soon for Shilajit */}
+        {activeTab === "shilajit-drops" ? (
+          <div className="shilajit-coming-soon-container">
+            <div className="shilajit-coming-soon-card">
+              <div className="shilajit-glow-orb-1"></div>
+              <div className="shilajit-glow-orb-2"></div>
+              <div className="shilajit-badge">
+                <span className="shilajit-badge-dot"></span>
+                Himalayan Purity
               </div>
-            );
-          })}
-        </div>
+              <h3 className="shilajit-coming-soon-title">
+                Coming Soon
+              </h3>
+              <p className="shilajit-coming-soon-desc">
+                We are currently crafting our premium, lab-tested 100% pure Himalayan Shilajit Drops.
+                An elixir of peak vitality, strength, and cognitive performance is on its way.
+              </p>
+              <div className="shilajit-stay-tuned">
+                <div className="pulse-circle"></div>
+                <span>Stay Tuned</span>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className={`products-cards-grid grid-${activeTab}`}>
+            {currentTab.products.map((product) => {
+              const hasImage = product.image && product.image.trim() !== "";
+              const hasDetails = true;
+              return (
+                <div
+                  key={product.id}
+                  className="prod-card has-details"
+                  onClick={() => handleOpenDetails(product)}
+                >
+                  {/* Plus Icon Button in Top-Right */}
+                  <button 
+                    className="prod-plus-btn"
+                    aria-label="View product details"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent card container onClick triggering twice
+                      handleOpenDetails(product);
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M11.25 12.75H5.5V11.25H11.25V5.5H12.75V11.25H18.5V12.75H12.75V18.5H11.25V12.75Z" fill="#050505" />
+                    </svg>
+                  </button>
+
+                  {/* Product Image Box */}
+                  <div className="prod-image-wrapper">
+                    {hasImage ? (
+                      <img src={product.image} alt={product.title} className="prod-actual-img" />
+                    ) : (
+                      <>
+                        {activeTab === "wellness-gummies" && <GummyPlaceholder />}
+                        {activeTab === "health-supplements" && <SupplementPlaceholder />}
+                        {activeTab === "herbal-masala" && <MasalaPlaceholder />}
+                      </>
+                    )}
+                  </div>
+
+                  {/* Product Card Details */}
+                  <div className="prod-info">
+                    {product.subLabel && (
+                      <span className="prod-sublabel">{product.subLabel}</span>
+                    )}
+                    <h3 className="prod-title">{product.title}</h3>
+                    {product.description && (
+                      <p className="prod-description">{product.description}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       {/* Conditionally Rendered Bottom Banners */}

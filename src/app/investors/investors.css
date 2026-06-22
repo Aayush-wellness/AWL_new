@@ -89,6 +89,10 @@
   border-bottom: 1px solid var(--gray-200);
   padding-bottom: 24px;
   margin-bottom: 32px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .investors-category-title {
@@ -97,7 +101,17 @@
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  margin-bottom: 8px;
+  margin-bottom: 0;
+}
+
+.investors-doc-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-500);
+  background: var(--gray-100);
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
 .investors-category-desc {
@@ -277,11 +291,15 @@
   cursor: pointer;
   transition: all 0.2s ease;
   gap: 8px;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .doc-action-btn:hover {
   background: var(--lime);
   transform: translateY(-1px);
+  color: var(--black);
+  text-decoration: none;
 }
 
 .no-documents {
@@ -407,18 +425,6 @@
   .document-table td {
     padding: 12px 14px;
     font-size: 13px;
-  }
-
-  .document-table th:nth-child(2),
-  .document-table td:nth-child(2) {
-    display: none;
-    /* Hide date on small mobile */
-  }
-
-  .document-table th:nth-child(3),
-  .document-table td:nth-child(3) {
-    display: none;
-    /* Hide size on small mobile */
   }
 }
 

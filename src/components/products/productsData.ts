@@ -37,20 +37,22 @@ export const PRODUCTS_DATA: ProductTab[] = [
         description: "A daily wellness supplement designed to support healthier sleep patterns, relaxation, and nighttime recovery through a convenient gummy format.",
         image: "/assets/images/products/gummies_1.png",
         keyBenefits: [
-          "Supports natural sleep cycles and relaxation",
-          "Promotes deep, restorative REM sleep",
-          "Helps reduce nighttime anxiety and stress",
-          "Easy-to-consume daily gummy format"
+          "Supports restful and uninterrupted sleep",
+          "Helps promote relaxation before bedtime",
+          "Supports healthy sleep routines",
+          "Convenient and enjoyable daily gummy format"
         ],
-        consumerNeed: "Modern lifestyles often lead to disrupted sleep patterns and high stress. Dreamy Sleep Gummies address this growing demand through a natural, non-habit-forming sleep aid in a pleasant, easy-to-use format that fits seamlessly into your evening routine.",
+        consumerNeed: "Poor sleep quality has become a growing concern due to stress, screen exposure, demanding schedules, and changing lifestyles. Sleep Gummies are designed to help consumers build healthier nighttime routines and prioritize recovery as part of their overall wellness journey.",
         ingredientsList: [
           { name: "Melatonin", image: "" },
           { name: "Chamomile", image: "" },
           { name: "L-Theanine", image: "" },
-          { name: "Valerian Root", image: "" },
           { name: "Lemon Balm", image: "" }
         ],
-        thumbnails: ["", "", ""]
+        thumbnails: [
+          "/assets/images/products/p_11.png",
+          "/assets/images/products/p_12.png",
+          "/assets/images/products/p_13.png"]
       },
       {
         id: "skin-hair-nail-gummies",
@@ -66,12 +68,12 @@ export const PRODUCTS_DATA: ProductTab[] = [
         ],
         consumerNeed: "Beauty and wellness are increasingly converging as consumers seek convenient solutions that support appearance, confidence, and overall well-being. Beauty Gummies address this growing demand through a simple daily routine.",
         ingredientsList: [
-          { name: "Glutathione", image: "" },
+          { name: "Vitamin E", image: "" },
+          { name: "Zinc ", image: "" },
+          { name: "Silica ", image: "" },
           { name: "Hyaluronic Acid", image: "" },
           { name: "Biotin", image: "" },
           { name: "Vitamin C", image: "" },
-          { name: "Sea Buckthorn", image: "" },
-          { name: "Gotu Kola", image: "" }
         ],
         thumbnails: [
           "/assets/images/products/gummies_thumb_1.png",
@@ -99,10 +101,11 @@ export const PRODUCTS_DATA: ProductTab[] = [
         ],
         consumerNeed: "Professionals and students face high cognitive demands daily. Brain Fuel provides natural, stimulant-free support to sustain mental clarity and focus without jitters.",
         ingredientsList: [
-          { name: "Brahmi", image: "" },
-          { name: "Shankhpushpi", image: "" },
-          { name: "Ashwagandha", image: "" },
-          { name: "Ginkgo Biloba", image: "" }
+          { name: "Bacopa Monnieri", image: "" },
+          { name: "Withania Somnifera", image: "" },
+          { name: "Curcuma Longa", image: "" },
+          { name: "Gotu Kola Extract", image: "" },
+          { name: "Ginkgo Biloba Extract", image: "" },
         ],
         thumbnails: ["", "", ""]
       },
@@ -233,7 +236,15 @@ export const PRODUCTS_DATA: ProductTab[] = [
         title: "Paan Masala Flavour",
         description: "The timeless classic - rich, aromatic, and refreshing. The authentic pan masala experience, reimagined with complete herbal purity.",
         image: "/assets/images/products/pan_masala_1.png",
-
+        ingredientsList: [
+          { name: "Cardamom Extract: 200mg", image: "" },
+          { name: "Fennel Seeds: 150mg", image: "" },
+          { name: "Clove Extract: 100mg", image: "" },
+          { name: "VLicorice Root: 75mg", image: "" },
+          { name: "Mint Leaves: 50mg", image: "" },
+          { name: "Areca Nut Substitute (Herbal Blend): 300mg", image: "" }
+        ],
+        thumbnails: ["", "", ""]
       },
       {
         id: "gutka-flavour",

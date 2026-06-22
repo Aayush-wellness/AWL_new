@@ -196,7 +196,8 @@
 }
 
 .grid-health-supplements,
-.grid-herbal-masala {
+.grid-herbal-masala,
+.grid-shilajit-drops {
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -270,16 +271,19 @@
   transform: scale(1.05);
 }
 
-/* Custom scale overrides for Herbal Masala product images to compensate for large transparent padding in source files */
-.grid-herbal-masala .prod-actual-img {
+/* Custom scale overrides for Herbal Masala & Shilajit Drops product images to compensate for large transparent padding in source files */
+.grid-herbal-masala .prod-actual-img,
+.grid-shilajit-drops .prod-actual-img {
   transform: scale(1.75);
 }
 
-.grid-herbal-masala .prod-card:hover .prod-actual-img {
+.grid-herbal-masala .prod-card:hover .prod-actual-img,
+.grid-shilajit-drops .prod-card:hover .prod-actual-img {
   transform: scale(1.82);
 }
 
-.grid-herbal-masala .prod-title {
+.grid-herbal-masala .prod-title,
+.grid-shilajit-drops .prod-title {
   margin-top: 30px;
 }
 
@@ -600,7 +604,8 @@ body:has(.products-page) #navbar .hamburger-line {
 @media (max-width: 1024px) {
 
   .grid-health-supplements,
-  .grid-herbal-masala {
+  .grid-herbal-masala,
+  .grid-shilajit-drops {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -691,7 +696,8 @@ body:has(.products-page) #navbar .hamburger-line {
 
   .grid-wellness-gummies,
   .grid-health-supplements,
-  .grid-herbal-masala {
+  .grid-herbal-masala,
+  .grid-shilajit-drops {
     grid-template-columns: 1fr;
     gap: 24px;
   }
@@ -1196,5 +1202,161 @@ body.modal-open {
   .modal-consumer-need-desc {
     font-size: 13.5px;
     line-height: 1.5;
+  }
+}
+
+/* ==========================================================================
+   SHILAJIT DROPS - COMING SOON
+   ========================================================================== */
+
+.shilajit-coming-soon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0 80px 0;
+  width: 100%;
+}
+
+.shilajit-coming-soon-card {
+  position: relative;
+  background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
+  border: 1px solid rgba(245, 158, 11, 0.15); /* amber border */
+  border-radius: 24px;
+  padding: 80px 40px;
+  max-width: 760px;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Glow Orbs behind card for dynamic ambient depth */
+.shilajit-glow-orb-1 {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: float-orb-1 8s infinite alternate ease-in-out;
+}
+
+.shilajit-glow-orb-2 {
+  position: absolute;
+  bottom: -20%;
+  right: -20%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(217, 119, 6, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: float-orb-2 8s infinite alternate ease-in-out;
+}
+
+@keyframes float-orb-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 20px) scale(1.1); }
+}
+
+@keyframes float-orb-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, -20px) scale(1.15); }
+}
+
+/* Badge style */
+.shilajit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 30px;
+}
+
+.shilajit-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fbbf24;
+  box-shadow: 0 0 10px #fbbf24;
+}
+
+/* Title text shimmering */
+.shilajit-coming-soon-title {
+  font-family: var(--font-display), 'Inter Display', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: #ffffff;
+  background: linear-gradient(to right, #ffffff 20%, #fcd34d 50%, #ffffff 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.shilajit-coming-soon-desc {
+  color: #9ca3af;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.6;
+  max-width: 580px;
+  margin-bottom: 40px;
+}
+
+/* Stay Tuned indicator */
+.shilajit-stay-tuned {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fbbf24;
+  letter-spacing: 0.5px;
+}
+
+.pulse-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fbbf24;
+  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
   }
 }
