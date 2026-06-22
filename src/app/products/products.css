@@ -489,7 +489,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: var(--lime-accent);
+  /* background-color: var(--lime-accent); */
   color: var(--text-primary);
   display: flex;
   align-items: center;
@@ -1217,7 +1217,8 @@ body.modal-open {
 .shilajit-coming-soon-card {
   position: relative;
   background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
-  border: 1px solid rgba(245, 158, 11, 0.15); /* amber border */
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  /* amber border */
   border-radius: 24px;
   padding: 80px 40px;
   max-width: 760px;
@@ -1256,13 +1257,23 @@ body.modal-open {
 }
 
 @keyframes float-orb-1 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(30px, 20px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(30px, 20px) scale(1.1);
+  }
 }
 
 @keyframes float-orb-2 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-30px, -20px) scale(1.15); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-30px, -20px) scale(1.15);
+  }
 }
 
 /* Badge style */
@@ -1348,10 +1359,12 @@ body.modal-open {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
   }
+
   70% {
     transform: scale(1);
     box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
   }
+
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
@@ -1495,22 +1508,27 @@ body.modal-open {
     padding: 32px 20px;
     border-radius: 12px;
   }
+
   .shilajit-banner-title {
     font-size: 26px;
     margin-bottom: 32px;
   }
+
   .shilajit-features-grid {
     grid-template-columns: 1fr;
     gap: 24px;
     margin-bottom: 40px;
   }
+
   .shilajit-ingredients-box {
     padding-top: 32px;
   }
+
   .shilajit-ingredients-header {
     font-size: 11px;
     margin-bottom: 16px;
   }
+
   .shilajit-ingredient-row {
     font-size: 14px;
     text-align: center;

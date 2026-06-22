@@ -397,7 +397,7 @@ export function ProductsPageClient() {
               >
                 {/* Plus Icon Button in Top-Right */}
                 {hasDetails && (
-                  <button 
+                  <button
                     className="prod-plus-btn"
                     aria-label="View product details"
                     onClick={(e) => {
@@ -448,14 +448,14 @@ export function ProductsPageClient() {
         <section className="shilajit-banner-sec">
           <div className="shilajit-banner-card">
             <h2 className="shilajit-banner-title">Why Drops?</h2>
-            
+
             <div className="shilajit-features-grid">
               <div className="shilajit-feature-card">
                 <div className="shilajit-feature-header">
                   <span className="shilajit-checkmark">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" stroke="#95D754" strokeWidth="2" fill="none"/>
-                      <path d="M8 12L11 15L16 9" stroke="#95D754" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                      <path d="M15.2889 28.028C22.3251 28.028 28.029 22.3241 28.029 15.2879C28.029 8.25178 22.3251 2.54785 15.2889 2.54785C8.25275 2.54785 2.54883 8.25178 2.54883 15.2879C2.54883 22.3241 8.25275 28.028 15.2889 28.028Z" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M11.4668 15.288L14.0148 17.836L19.1108 12.74" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
                   <h3 className="shilajit-feature-title">Faster & More Convenient</h3>
@@ -468,9 +468,9 @@ export function ProductsPageClient() {
               <div className="shilajit-feature-card">
                 <div className="shilajit-feature-header">
                   <span className="shilajit-checkmark">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" stroke="#95D754" strokeWidth="2" fill="none"/>
-                      <path d="M8 12L11 15L16 9" stroke="#95D754" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                      <path d="M15.2889 28.028C22.3251 28.028 28.029 22.3241 28.029 15.2879C28.029 8.25178 22.3251 2.54785 15.2889 2.54785C8.25275 2.54785 2.54883 8.25178 2.54883 15.2879C2.54883 22.3241 8.25275 28.028 15.2889 28.028Z" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M11.4668 15.288L14.0148 17.836L19.1108 12.74" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
                   <h3 className="shilajit-feature-title">Easy Daily Consistency</h3>
@@ -483,9 +483,9 @@ export function ProductsPageClient() {
               <div className="shilajit-feature-card">
                 <div className="shilajit-feature-header">
                   <span className="shilajit-checkmark">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" stroke="#95D754" strokeWidth="2" fill="none"/>
-                      <path d="M8 12L11 15L16 9" stroke="#95D754" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                      <path d="M15.2889 28.028C22.3251 28.028 28.029 22.3241 28.029 15.2879C28.029 8.25178 22.3251 2.54785 15.2889 2.54785C8.25275 2.54785 2.54883 8.25178 2.54883 15.2879C2.54883 22.3241 8.25275 28.028 15.2889 28.028Z" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M11.4668 15.288L14.0148 17.836L19.1108 12.74" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
                   <h3 className="shilajit-feature-title">Portable & Travel-Friendly</h3>
@@ -498,9 +498,9 @@ export function ProductsPageClient() {
               <div className="shilajit-feature-card">
                 <div className="shilajit-feature-header">
                   <span className="shilajit-checkmark">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" stroke="#95D754" strokeWidth="2" fill="none"/>
-                      <path d="M8 12L11 15L16 9" stroke="#95D754" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                      <path d="M15.2889 28.028C22.3251 28.028 28.029 22.3241 28.029 15.2879C28.029 8.25178 22.3251 2.54785 15.2889 2.54785C8.25275 2.54785 2.54883 8.25178 2.54883 15.2879C2.54883 22.3241 8.25275 28.028 15.2889 28.028Z" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M11.4668 15.288L14.0148 17.836L19.1108 12.74" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
                   <h3 className="shilajit-feature-title">Flexible Consumption</h3>
@@ -545,8 +545,9 @@ export function ProductsPageClient() {
               {HERBAL_MASALA_FEATURES.map((feature, idx) => (
                 <div key={idx} className="masala-feature-item">
                   <span className="checkmark-icon">
-                    <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 4L4.5 7.5L11 1" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+                      <path d="M15.2889 28.028C22.3251 28.028 28.029 22.3241 28.029 15.2879C28.029 8.25178 22.3251 2.54785 15.2889 2.54785C8.25275 2.54785 2.54883 8.25178 2.54883 15.2879C2.54883 22.3241 8.25275 28.028 15.2889 28.028Z" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M11.4668 15.288L14.0148 17.836L19.1108 12.74" stroke="#66AD0C" strokeWidth="2.54802" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
                   <span className="feature-text">{feature}</span>

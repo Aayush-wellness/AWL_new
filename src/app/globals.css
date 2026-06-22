@@ -283,6 +283,14 @@ nav.hidden {
   filter: brightness(1.15) saturate(0.85);
 }
 
+.hero-video-desktop {
+  display: block;
+}
+
+.hero-video-mobile {
+  display: none;
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -3310,6 +3318,14 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+  .hero-video-desktop {
+    display: none !important;
+  }
+
+  .hero-video-mobile {
+    display: block !important;
+  }
 
   /* Homepage Mobile Typography Overrides */
   .hero-title {
