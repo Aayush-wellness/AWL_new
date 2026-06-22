@@ -19,37 +19,37 @@ const STATIC_PRESS_ITEMS: PressItem[] = [
   {
     id: "1",
     category: "Press Releases",
-    title: "Aayush Wellness launches \"Liver Detox Tablets\" to capture growing demand in Preventive Wellness and Lifestyle Disease Management.",
-    excerpt: "Launch aligns with rising fatty liver prevalence and a rapidly expanding nutraceutical market, reinforcing the Company's strategy to build condition-led preventive healthcare categories.",
-    date: "03-04-2026",
-    link: "/news",
+    title: "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+    excerpt: "Maharashtra''s MCOCA Crackdown on illegal Gutkha Trade Creates Significant Growth Opportunity for Aayush Wellness''s Herbal Masala Business",
+    date: "17-06-2026",
+    link: "/assets/images/press/pr_1.pdf",
     hasImage: true,
   },
   {
     id: "2",
     category: "Press Releases",
-    title: "Aayush Wellness Enters India's ₹366 Billion Metabolic Health Market with Launch of Aayush Dia Shield Tablets",
-    excerpt: "Targets over 230 million Indians affected by diabetes and pre-diabetes with a preventive, science-backed wellness solution",
-    date: "03-04-2026",
-    link: "/news",
+    title: " Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+    excerpt: "Press release on Audited Financial Statements of the Company.",
+    date: "29-05-2026",
+    link: "/assets/images/press/pr_2.pdf",
     hasImage: false,
   },
   {
     id: "3",
     category: "Press Releases",
-    title: "Strategic Collaboration With Healthrashi Nextgen India Limited To Deliver Integrated Healthcare Solutions",
-    excerpt: "Strengthen Its Presence in India's USD 370 Billion Preventive Healthcare Market",
-    date: "03-04-2026",
-    link: "/news",
+    title: " Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+    excerpt: "Aayush Wellness enters India''s Rs. 366 Billion Metabolic Health Market with Launch of Aayush Dia Shield Tablets",
+    date: "08-05-2026",
+    link: "/assets/images/press/pr_3.pdf",
     hasImage: false,
   },
   {
     id: "4",
     category: "Press Releases",
-    title: "Aayush Wellness Strengthens Its Presence in the $18 Billion Nutraceutical Market with Launch of Immunity Booster Tablets.",
-    excerpt: "Enhancing shareholder value through category expansion into India's fastest-growing wellness segment",
-    date: "03-04-2026",
-    link: "/news",
+    title: "Announcement under Regulation 30 (LODR)-Press Release / Media Release.",
+    excerpt: "Aayush Wellness Limited launches Liver Detox Tablets to capture growing demand in Preventive Wellness and Lifestyle Disease Management.",
+    date: "24-04-2026",
+    link: "/assets/images/press/pr_4.pdf",
     hasImage: true,
   },
 ];
@@ -77,7 +77,7 @@ function PressCard({ item, position }: { item: PressItem; position: number }) {
             <span className="press-date">{item.date}</span>
           </div>
         </div>
-        <a href={item.link} className="press-ext-link" aria-label="Read more">
+        <a href={item.link} download className="press-ext-link" aria-label="Download PDF">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
             <path d="M6.19229 23.9163C5.60293 23.9163 5.10409 23.7122 4.69575 23.3038C4.28742 22.8955 4.08325 22.3967 4.08325 21.8073V6.19205C4.08325 5.60269 4.28742 5.10384 4.69575 4.69551C5.10409 4.28717 5.60293 4.08301 6.19229 4.08301H13.551V5.83301H6.19229C6.10246 5.83301 6.02021 5.87044 5.94554 5.9453C5.87068 6.01997 5.83325 6.10222 5.83325 6.19205V21.8073C5.83325 21.8971 5.87068 21.9794 5.94554 22.0541C6.02021 22.1289 6.10246 22.1663 6.19229 22.1663H21.8075C21.8974 22.1663 21.9796 22.1289 22.0543 22.0541C22.1292 21.9794 22.1666 21.8971 22.1666 21.8073V14.4486H23.9166V21.8073C23.9166 22.3967 23.7124 22.8955 23.3041 23.3038C22.8958 23.7122 22.3969 23.9163 21.8075 23.9163H6.19229ZM11.339 17.8899L10.1097 16.6606L20.9372 5.83301H16.3333V4.08301H23.9166V11.6663H22.1666V7.06238L11.339 17.8899Z" fill="currentColor" />
           </svg>
@@ -103,7 +103,7 @@ function PressCard({ item, position }: { item: PressItem; position: number }) {
               <span className="press-date">{item.date}</span>
             </div>
           </div>
-          <a href={item.link} className="press-ext-link" aria-label="Read more">
+          <a href={item.link} download className="press-ext-link" aria-label="Download PDF">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
               <path d="M6.19229 23.9163C5.60293 23.9163 5.10409 23.7122 4.69575 23.3038C4.28742 22.8955 4.08325 22.3967 4.08325 21.8073V6.19205C4.08325 5.60269 4.28742 5.10384 4.69575 4.69551C5.10409 4.28717 5.60293 4.08301 6.19229 4.08301H13.551V5.83301H6.19229C6.10246 5.83301 6.02021 5.87044 5.94554 5.9453C5.87068 6.01997 5.83325 6.10222 5.83325 6.19205V21.8073C5.83325 21.8971 5.87068 21.9794 5.94554 22.0541C6.02021 22.1289 6.10246 22.1663 6.19229 22.1663H21.8075C21.8974 22.1663 21.9796 22.1289 22.0543 22.0541C22.1292 21.9794 22.1666 21.8971 22.1666 21.8073V14.4486H23.9166V21.8073C23.9166 22.3967 23.7124 22.8955 23.3041 23.3038C22.8958 23.7122 22.3969 23.9163 21.8075 23.9163H6.19229ZM11.339 17.8899L10.1097 16.6606L20.9372 5.83301H16.3333V4.08301H23.9166V11.6663H22.1666V7.06238L11.339 17.8899Z" fill="currentColor" />
             </svg>
@@ -124,7 +124,7 @@ function PressCard({ item, position }: { item: PressItem; position: number }) {
           <span className="press-date">{item.date}</span>
         </div>
       </div>
-      <a href={item.link} className="press-ext-link" aria-label="Read more">
+      <a href={item.link} download className="press-ext-link" aria-label="Download PDF">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
           <path d="M6.19229 23.9163C5.60293 23.9163 5.10409 23.7122 4.69575 23.3038C4.28742 22.8955 4.08325 22.3967 4.08325 21.8073V6.19205C4.08325 5.60269 4.28742 5.10384 4.69575 4.69551C5.10409 4.28717 5.60293 4.08301 6.19229 4.08301H13.551V5.83301H6.19229C6.10246 5.83301 6.02021 5.87044 5.94554 5.9453C5.87068 6.01997 5.83325 6.10222 5.83325 6.19205V21.8073C5.83325 21.8971 5.87068 21.9794 5.94554 22.0541C6.02021 22.1289 6.10246 22.1663 6.19229 22.1663H21.8075C21.8974 22.1663 21.9796 22.1289 22.0543 22.0541C22.1292 21.9794 22.1666 21.8971 22.1666 21.8073V14.4486H23.9166V21.8073C23.9166 22.3967 23.7124 22.8955 23.3041 23.3038C22.8958 23.7122 22.3969 23.9163 21.8075 23.9163H6.19229ZM11.339 17.8899L10.1097 16.6606L20.9372 5.83301H16.3333V4.08301H23.9166V11.6663H22.1666V7.06238L11.339 17.8899Z" fill="currentColor" />
         </svg>

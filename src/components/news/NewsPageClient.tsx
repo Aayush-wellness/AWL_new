@@ -107,7 +107,32 @@ export function NewsPageClient() {
           <h2 className="news-section-title">In the News</h2>
         </div>
 
-        {/* 3. CONTROLS BAR (SEARCH & SORT) */}
+        <div className="news-coming-soon-container">
+          <div className="news-coming-soon-card">
+            <div className="news-glow-orb-1"></div>
+            <div className="news-glow-orb-2"></div>
+            <div className="news-badge">
+              <span className="news-badge-dot"></span>
+              Media Center
+            </div>
+            <h2 className="news-coming-soon-title">
+              Updates Coming Soon
+            </h2>
+            <p className="news-coming-soon-desc">
+              We are currently preparing our official announcements, business milestones,
+              press releases, and product launches. Stay tuned for the latest news from Aayush Wellness.
+            </p>
+            <div className="news-stay-tuned">
+              <div className="news-pulse-circle"></div>
+              <span>Press Releases Launching Soon</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 
+        ==========================================================================
+        PREVIOUS CODE (COMMENTED OUT AS REQUESTED)
+        ==========================================================================
         <div className="news-controls-bar">
           <form onSubmit={handleSearchSubmit} className="news-search-form">
             <input
@@ -137,7 +162,6 @@ export function NewsPageClient() {
             className="news-sort-btn"
             aria-label={`Sort by date, current: ${sortOrder === "desc" ? "Newest First" : "Oldest First"}`}
           >
-            {/* Sorting Icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -161,29 +185,24 @@ export function NewsPageClient() {
           </button>
         </div>
 
-        {/* 4. ARTICLES GRID */}
         {processedArticles.length > 0 ? (
           <div className="news-articles-grid">
             {processedArticles.map((article) => (
               <article key={article.id} className="news-card-item">
-                {/* Publisher Logo */}
                 <div className="news-card-logo-box">
                   <PublisherLogo source={article.source} />
                 </div>
                 
                 <div className="news-card-divider" />
                 
-                {/* Date & Category Metadata */}
                 <div className="news-card-meta">
                   <span className="news-card-date">{article.date}</span>
                   <span className="news-card-bullet">•</span>
                   <span className="news-card-cat">{article.category}</span>
                 </div>
                 
-                {/* Headline Title */}
                 <h3 className="news-card-title">{article.title}</h3>
                 
-                {/* Read More Link */}
                 <div className="news-card-footer">
                   <a href={article.link} className="news-card-readmore">
                     Read more
@@ -216,6 +235,7 @@ export function NewsPageClient() {
             </button>
           </div>
         )}
+        */}
       </section>
     </div>
   );
