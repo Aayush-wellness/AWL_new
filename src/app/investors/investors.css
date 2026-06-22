@@ -687,6 +687,7 @@
   background: #ffffff;
   color: var(--black);
   font-weight: 700;
-  border-bottom: 2px solid #E11D48; /* Rose/Red accent line */
+  border-bottom: 2px solid #E11D48;
+  /* Rose/Red accent line */
   border-radius: 4px 4px 0 0;
 }

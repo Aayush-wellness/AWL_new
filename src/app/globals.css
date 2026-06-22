@@ -3322,7 +3322,7 @@ footer {
   .why-title,
   .reach-title,
   .beyond-title {
-    color: #050505;
+    color: #FFF;
     font-family: Manrope;
     font-size: 25px;
     font-style: normal;
@@ -3348,7 +3348,7 @@ footer {
   .why-card-body,
   .why-card p,
   .reach-body {
-    color: var(--PremiumGray1, #2B2B2B);
+    color: #FFF;
     font-family: Manrope;
     font-size: 14px;
     font-style: normal;
@@ -3703,95 +3703,104 @@ footer {
     letter-spacing: -2.34px !important;
     display: block !important;
     width: 100% !important;
-
-
-    .footer-bottom {
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      gap: 16px !important;
-    }
-
-    /* Hero action buttons mobile responsiveness */
-    .hero-actions {
-      gap: 12px !important;
-      margin-top: 700px !important;
-    }
-
-    .btn-ghost,
-    .btn-lime {
-      font-size: 13px !important;
-      padding: 15px 20px !important;
-
-    }
-
-    #hero {
-      height: 70vh !important;
-      min-height: 620px !important;
-    }
-
-    .scroll-indicator {
-      display: none !important;
-    }
-
-    /* About Read More mobile button overrides */
-    .about-read-more {
-      font-size: 14px !important;
-      padding: 10px 20px !important;
-      margin-top: 24px !important;
-    }
-
-    .about-read-more svg {
-      width: 18px !important;
-      height: 18px !important;
-    }
   }
 
-
-  .sus-approach-bg-shape {
-    top: -40px !important;
-    right: -40px !important;
-    bottom: auto !important;
-    width: 220px !important;
-    height: auto !important;
-    transform: rotate(180deg) !important;
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
   }
 
-  /* ==========================================================================
+  /* Hero action buttons mobile responsiveness */
+  .hero-actions {
+    gap: 12px !important;
+    margin-top: 700px !important;
+    display: flex;
+    flex-direction: column;
+    height: 44px !important;
+
+  }
+
+  .btn-ghost {
+    font-size: 14px !important;
+    padding: 15px 20px !important;
+    border: none;
+  }
+
+  .btn-lime {
+    font-size: 14px !important;
+    padding: 15px 20px !important;
+
+  }
+
+  #hero {
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  /* About Read More mobile button overrides */
+  .about-read-more {
+    font-size: 14px !important;
+    padding: 12px 24px !important;
+    margin-top: 24px !important;
+    gap: 6px !important;
+  }
+
+  .about-read-more svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+
+.sus-approach-bg-shape {
+  top: -40px !important;
+  right: -40px !important;
+  bottom: auto !important;
+  width: 220px !important;
+  height: auto !important;
+  transform: rotate(180deg) !important;
+}
+
+/* ==========================================================================
    AYU-TAG GLOBAL UI STYLES
    ========================================================================== */
-  .ayu-tag {
-    display: inline-block;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-family: var(--font-body), sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    text-transform: capitalize;
-    user-select: none;
-    margin-bottom: 36px;
-  }
+.ayu-tag {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: capitalize;
+  user-select: none;
+  margin-bottom: 36px;
+}
 
-  .ayu-tag-dark {
-    background: var(--black, #0a0a0a);
-    color: #fff;
-  }
+.ayu-tag-dark {
+  background: var(--black, #0a0a0a);
+  color: #fff;
+}
 
-  .ayu-tag-light {
-    background: #fff;
-    color: var(--black, #0a0a0a);
-    border: 1px solid var(--gray-200, #e0ddd8);
-  }
+.ayu-tag-light {
+  background: #fff;
+  color: var(--black, #0a0a0a);
+  border: 1px solid var(--gray-200, #e0ddd8);
+}
 
-  .ayu-tag-glass {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    backdrop-filter: blur(4px);
-  }
+.ayu-tag-glass {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
 
-  /* Force dark navbar background on the store page so white links and logo are visible on the light background */
-  body:has(.store-page) #navbar {
-    background: rgba(10, 10, 10, 0.96) !important;
-    backdrop-filter: blur(20px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  }
+/* Force dark navbar background on the store page so white links and logo are visible on the light background */
+body:has(.store-page) #navbar {
+  background: rgba(10, 10, 10, 0.96) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }

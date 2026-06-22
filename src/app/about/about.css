@@ -767,8 +767,8 @@ body:has(.about-page) #navbar .nav-cta:hover {
 
   /* Hero Overrides */
   .about-page #hero {
-    height: 70vh !important;
-    min-height: 70vh !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
     align-items: flex-end;
   }
 
@@ -828,6 +828,7 @@ body:has(.about-page) #navbar .nav-cta:hover {
     font-weight: 700;
     margin-right: 0;
     margin-left: 0;
+    text-transform: capitalize;
   }
 
   .about-page .timeline-line {

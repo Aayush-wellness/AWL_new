@@ -978,8 +978,8 @@
 
   /* Hero Section Mobile Styling */
   .ayurveda-page .ayu-hero {
-    height: 80vh !important;
-    min-height: 80vh !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
   }
 
   .ayurveda-page .ayu-hero-content {
