@@ -1526,7 +1526,3 @@ body.modal-open {
   transform: none !important;
   box-shadow: none !important;
 }
-
-.prod-card.no-details:hover .prod-actual-img {
-  transform: none !important;
-}
