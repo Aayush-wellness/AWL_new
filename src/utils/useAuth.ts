@@ -76,16 +76,16 @@ export function useAuth() {
         isAuthenticated: true,
       });
 
-      router.push("/admin");
+      window.location.href = "/admin";
     },
-    [router]
+    []
   );
 
   const logout = useCallback(() => {
     clearAuth();
     setState({ token: null, user: null, isLoading: false, isAuthenticated: false });
-    router.push("/admin/login");
-  }, [router]);
+    window.location.href = "/admin/login";
+  }, []);
 
   return { ...state, login, logout };
 }

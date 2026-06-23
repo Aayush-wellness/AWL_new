@@ -5,6 +5,7 @@ import AdminTable, { TableColumn } from "../AdminTable";
 import AdminModal from "../AdminModal";
 import AdminDeleteConfirm from "../AdminDeleteConfirm";
 import { apiClient } from "@/utils/apiClient";
+import { uploadFile } from "@/utils/upload";
 
 interface PressRelease {
   id: string;
@@ -78,6 +79,42 @@ export default function PressReleaseList() {
   const [formError, setFormError] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Shopify file upload states
+  const [isImageUploading, setIsImageUploading] = useState(false);
+  const [isPdfUploading, setIsPdfUploading] = useState(false);
+  const [imageUploadError, setImageUploadError] = useState<string | null>(null);
+  const [pdfUploadError, setPdfUploadError] = useState<string | null>(null);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setIsImageUploading(true);
+    setImageUploadError(null);
+    try {
+      const url = await uploadFile(file);
+      setImageUrl(url);
+    } catch (err: any) {
+      setImageUploadError(err.message || "Failed to upload image.");
+    } finally {
+      setIsImageUploading(false);
+    }
+  };
+
+  const handlePdfUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setIsPdfUploading(true);
+    setPdfUploadError(null);
+    try {
+      const url = await uploadFile(file);
+      setPdfUrl(url);
+    } catch (err: any) {
+      setPdfUploadError(err.message || "Failed to upload PDF.");
+    } finally {
+      setIsPdfUploading(false);
+    }
+  };
+
   // ── Fetch list ─────────────────────────────────────────────────────────────
 
   const fetchPressReleases = useCallback(async () => {
@@ -121,6 +158,10 @@ export default function PressReleaseList() {
     setReleaseDate(new Date().toISOString().split("T")[0]);
     setIsPublished(false);
     setFormError(null);
+    setIsImageUploading(false);
+    setIsPdfUploading(false);
+    setImageUploadError(null);
+    setPdfUploadError(null);
     setIsFormOpen(true);
   };
 
@@ -145,6 +186,10 @@ export default function PressReleaseList() {
     setReleaseDate(new Date(item.releaseDate).toISOString().split("T")[0]);
     setIsPublished(item.isPublished);
     setFormError(null);
+    setIsImageUploading(false);
+    setIsPdfUploading(false);
+    setImageUploadError(null);
+    setPdfUploadError(null);
     setIsFormOpen(true);
   };
 
@@ -402,6 +447,37 @@ export default function PressReleaseList() {
                 onChange={(e) => setImageUrl(e.target.value)}
                 placeholder="https://..."
               />
+              <div style={{ marginTop: "6px", display: "flex", alignItems: "center", gap: "8px" }}>
+                <label 
+                  style={{
+                    display: "inline-block",
+                    padding: "6px 12px",
+                    background: isImageUploading ? "#a2c579" : "#4f7c0d",
+                    color: "#fff",
+                    borderRadius: "4px",
+                    cursor: isImageUploading ? "not-allowed" : "pointer",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                  }}
+                >
+                  {isImageUploading ? "Uploading..." : "Upload Image to Shopify"}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    disabled={isImageUploading}
+                    style={{ display: "none" }}
+                  />
+                </label>
+                {imageUrl && !isImageUploading && (
+                  <span style={{ fontSize: "12px", color: "#2e7d32" }}>✓ File ready</span>
+                )}
+              </div>
+              {imageUploadError && (
+                <div style={{ color: "#d32f2f", fontSize: "11px", marginTop: "4px" }}>
+                  Error: {imageUploadError}
+                </div>
+              )}
             </div>
             <div className="admin-form-group">
               <label className="admin-label">PDF URL</label>
@@ -412,6 +488,37 @@ export default function PressReleaseList() {
                 onChange={(e) => setPdfUrl(e.target.value)}
                 placeholder="https://..."
               />
+              <div style={{ marginTop: "6px", display: "flex", alignItems: "center", gap: "8px" }}>
+                <label 
+                  style={{
+                    display: "inline-block",
+                    padding: "6px 12px",
+                    background: isPdfUploading ? "#a2c579" : "#4f7c0d",
+                    color: "#fff",
+                    borderRadius: "4px",
+                    cursor: isPdfUploading ? "not-allowed" : "pointer",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                  }}
+                >
+                  {isPdfUploading ? "Uploading..." : "Upload PDF to Shopify"}
+                  <input
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handlePdfUpload}
+                    disabled={isPdfUploading}
+                    style={{ display: "none" }}
+                  />
+                </label>
+                {pdfUrl && !isPdfUploading && (
+                  <span style={{ fontSize: "12px", color: "#2e7d32" }}>✓ File ready</span>
+                )}
+              </div>
+              {pdfUploadError && (
+                <div style={{ color: "#d32f2f", fontSize: "11px", marginTop: "4px" }}>
+                  Error: {pdfUploadError}
+                </div>
+              )}
             </div>
           </div>
 

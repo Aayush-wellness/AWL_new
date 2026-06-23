@@ -379,9 +379,18 @@
   line-height: 1.4;
   color: #0F1012;
   letter-spacing: -0.01em;
-  margin: 0 0 36px 0;
-  flex: 1;
-  /* Pushes the read more link to the exact bottom of all cards */
+  margin: 0 0 16px 0;
+}
+
+.news-card-desc {
+  color: #8C8C8C;
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Card Footer and Read More Link */
@@ -529,7 +538,8 @@
 .news-coming-soon-card {
   position: relative;
   background: linear-gradient(135deg, #0a0f0a 0%, #121812 100%);
-  border: 1px solid rgba(149, 215, 84, 0.15); /* lime tint border */
+  border: 1px solid rgba(149, 215, 84, 0.15);
+  /* lime tint border */
   border-radius: 24px;
   padding: 80px 40px;
   max-width: 820px;
@@ -644,10 +654,12 @@
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(149, 215, 84, 0.7);
   }
+
   70% {
     transform: scale(1);
     box-shadow: 0 0 0 10px rgba(149, 215, 84, 0);
   }
+
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(149, 215, 84, 0);
@@ -658,6 +670,7 @@
   0% {
     transform: translate(0, 0) scale(1);
   }
+
   100% {
     transform: translate(20px, 20px) scale(1.15);
   }
@@ -667,6 +680,7 @@
   0% {
     transform: translate(0, 0) scale(1);
   }
+
   100% {
     transform: translate(-20px, -20px) scale(1.15);
   }
@@ -676,6 +690,7 @@
   0% {
     background-position: 200% center;
   }
+
   100% {
     background-position: -200% center;
   }

@@ -1,84 +1,77 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import AdminTable, { TableColumn } from "../AdminTable";
 import AdminModal from "../AdminModal";
 import AdminDeleteConfirm from "../AdminDeleteConfirm";
+import { apiClient } from "@/utils/apiClient";
 
 interface ContactInquiry {
   id: string;
   fullName: string;
   email: string;
-  phone: string;
-  company: string;
-  inquiryType: string;
+  phoneNo: string | null;
+  company: string | null;
+  inquiryType: string | null;
   message: string;
+  isRead: boolean;
   createdAt: string;
 }
 
-const INITIAL_DATA: ContactInquiry[] = [
-  {
-    id: "con-1",
-    fullName: "Rohan Sharma",
-    email: "rohan.sharma@example.com",
-    phone: "+91 9876543210",
-    company: "Sharma Retailers",
-    inquiryType: "Business Partnership",
-    message: "We are interested in distributing Aayush wellness gummies in the Maharashtra region. We have over 150 retail touchpoints. Please connect us with your sales manager.",
-    createdAt: "2026-06-17T14:12:00Z",
-  },
-  {
-    id: "con-2",
-    fullName: "Priya Patel",
-    email: "priya.patel@example.com",
-    phone: "+91 9988776655",
-    company: "Personal Health",
-    inquiryType: "Products & Orders",
-    message: "I've been using your Dreamy Sleep Gummies for the last 2 weeks and they've been incredibly effective. Do you offer bulk subscription discounts for regular monthly orders?",
-    createdAt: "2026-06-16T09:30:00Z",
-  },
-  {
-    id: "con-3",
-    fullName: "Anand Gupta",
-    email: "anand.gupta@example.com",
-    phone: "+91 9123456789",
-    company: "Gupta Investments LLC",
-    inquiryType: "Investor Relations",
-    message: "Could you send over the latest investor presentation and financial results booklet for FY26? I am interested in understanding your long term retail expansion plans.",
-    createdAt: "2026-06-15T11:45:00Z",
-  },
-  {
-    id: "con-4",
-    fullName: "Sarah Jenkins",
-    email: "sarah.j@example.com",
-    phone: "+1 415 555 2671",
-    company: "Wellness Global Corp",
-    inquiryType: "General Enquiry",
-    message: "Do you export products to North America or Europe? We are looking to import high quality Ayurvedic gummies and supplements for our health storefronts.",
-    createdAt: "2026-06-14T16:20:00Z",
-  },
-  {
-    id: "con-5",
-    fullName: "Vikram Malhotra",
-    email: "v.malhotra@wellnessindia.com",
-    phone: "+91 9654321098",
-    company: "Wellness India Distributors",
-    inquiryType: "Business Partnership",
-    message: "We want to schedule a brief introductory call to discuss co-branding opportunities for wellness gummies. Please let us know your availability.",
-    createdAt: "2026-06-13T08:15:00Z",
-  },
-];
+interface ContactListResponse {
+  items: ContactInquiry[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+}
 
 export default function ContactList() {
-  const [data, setData] = useState<ContactInquiry[]>(INITIAL_DATA);
+  const [data, setData] = useState<ContactInquiry[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<ContactInquiry | null>(null);
   const [deletingItem, setDeletingItem] = useState<ContactInquiry | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleViewOpen = (item: ContactInquiry) => {
+  const fetchContactInquiries = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const res = await apiClient.get<ContactListResponse>("/contact?limit=250");
+      setData(res.data.items || []);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Failed to fetch contact inquiries.";
+      setError(msg);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchContactInquiries();
+  }, [fetchContactInquiries]);
+
+  const handleViewOpen = async (item: ContactInquiry) => {
     setSelectedItem(item);
     setIsDetailOpen(true);
+
+    if (!item.isRead) {
+      try {
+        await apiClient.patch(`/contact/${item.id}/read`, {});
+        // Update local state to reflect that it is read
+        setData((prev) =>
+          prev.map((i) => (i.id === item.id ? { ...i, isRead: true } : i))
+        );
+      } catch (err) {
+        console.error("Failed to mark inquiry as read:", err);
+      }
+    }
   };
 
   const handleDeleteOpen = (item: ContactInquiry) => {
@@ -86,11 +79,20 @@ export default function ContactList() {
     setIsDeleteOpen(true);
   };
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = async () => {
     if (!deletingItem) return;
-    setData((prev) => prev.filter((item) => item.id !== deletingItem.id));
-    setIsDeleteOpen(false);
-    setDeletingItem(null);
+    setIsDeleting(true);
+    try {
+      await apiClient.delete(`/contact/${deletingItem.id}`);
+      setData((prev) => prev.filter((item) => item.id !== deletingItem.id));
+      setIsDeleteOpen(false);
+      setDeletingItem(null);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Failed to delete submission.";
+      alert(`Error: ${msg}`);
+    } finally {
+      setIsDeleting(false);
+    }
   };
 
   const formatDate = (isoString: string) => {
@@ -107,9 +109,24 @@ export default function ContactList() {
       header: "Name",
       accessor: "fullName",
       render: (row) => (
-        <span style={{ fontWeight: "600", color: "var(--admin-text-primary)" }}>
-          {row.fullName}
-        </span>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          {!row.isRead && (
+            <span
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                backgroundColor: "#2563eb",
+                display: "inline-block",
+                flexShrink: 0,
+              }}
+              title="Unread"
+            />
+          )}
+          <span style={{ fontWeight: "600", color: "var(--admin-text-primary)" }}>
+            {row.fullName}
+          </span>
+        </div>
       ),
     },
     {
@@ -118,16 +135,18 @@ export default function ContactList() {
     },
     {
       header: "Phone",
-      accessor: "phone",
+      accessor: "phoneNo",
+      render: (row) => <span>{row.phoneNo || "N/A"}</span>,
     },
     {
       header: "Type",
       accessor: "inquiryType",
       render: (row) => {
         let badgeClass = "admin-badge-info";
-        if (row.inquiryType === "Business Partnership") badgeClass = "admin-badge-success";
-        if (row.inquiryType === "Investor Relations") badgeClass = "admin-badge-warning";
-        return <span className={`admin-badge ${badgeClass}`}>{row.inquiryType}</span>;
+        const val = row.inquiryType || "General Enquiry";
+        if (val === "Business Partnership") badgeClass = "admin-badge-success";
+        if (val === "Investor Relations") badgeClass = "admin-badge-warning";
+        return <span className={`admin-badge ${badgeClass}`}>{val}</span>;
       },
     },
     {
@@ -136,6 +155,28 @@ export default function ContactList() {
       render: (row) => <span>{formatDate(row.createdAt)}</span>,
     },
   ];
+
+  if (isLoading) {
+    return (
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "300px" }}>
+        <div style={{ fontSize: "1.1rem", color: "var(--admin-text-muted)", fontWeight: "500" }}>
+          Loading contact inquiries...
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ padding: "24px", background: "rgba(211,47,47,0.08)", border: "1px solid rgba(211,47,47,0.3)", borderRadius: "12px", color: "#ef5350", maxWidth: "600px", margin: "20px auto" }}>
+        <h3 style={{ margin: "0 0 8px 0" }}>Error Loading Contact Inquiries</h3>
+        <p style={{ margin: "0 0 16px 0", lineHeight: "1.5" }}>{error}</p>
+        <button className="admin-btn admin-btn-primary" onClick={fetchContactInquiries}>
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -181,7 +222,7 @@ export default function ContactList() {
               <div>
                 <span className="admin-label">Phone Number</span>
                 <div style={{ padding: "10px", backgroundColor: "var(--admin-surface)", borderRadius: "8px", border: "1px solid var(--admin-border)" }}>
-                  {selectedItem.phone || "N/A"}
+                  {selectedItem.phoneNo || "N/A"}
                 </div>
               </div>
             </div>
@@ -200,7 +241,7 @@ export default function ContactList() {
                     }`}
                     style={{ padding: "8px 14px", fontSize: "0.85rem" }}
                   >
-                    {selectedItem.inquiryType}
+                    {selectedItem.inquiryType || "General Enquiry"}
                   </span>
                 </div>
               </div>
@@ -243,6 +284,7 @@ export default function ContactList() {
                   setIsDetailOpen(false);
                   handleDeleteOpen(selectedItem);
                 }}
+                disabled={isDeleting}
               >
                 Delete Submission
               </button>

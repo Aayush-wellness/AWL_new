@@ -20,9 +20,9 @@ export default function AdminLoginPage() {
   useEffect(() => {
     const { token } = getStoredAuth();
     if (token) {
-      router.replace("/admin");
+      window.location.href = "/admin";
     }
-  }, [router]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

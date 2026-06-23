@@ -76,8 +76,8 @@ export function Footer() {
 
       <div className="footer-bottom">
         <p className="footer-copy">
-          © 2025 Aayush Wellness Limited. All rights reserved
-          <Link href="/admin/login" style={{ cursor: "default", color: "inherit", textDecoration: "none" }}>.</Link>
+          © <Link href="/admin/login" style={{ cursor: "default", color: "inherit", textDecoration: "none" }}>2025</Link> Aayush Wellness Limited. All rights reserved.
+
         </p>
         <div className="footer-legal">
           <Link href="/privacy">Privacy Policy</Link>
