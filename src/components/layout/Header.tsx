@@ -127,9 +127,9 @@ export function Header() {
               <li>
                 <Link href="/sustainability">Sustainability & Impact</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/careers">Careers</Link>
-              </li>
+              </li> */}
             </ul>
           </li>
           <li className="has-dropdown">
@@ -207,11 +207,11 @@ export function Header() {
                 Sustainability & Impact
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/careers" className={isActive("/careers") ? "active" : ""}>
                 Careers
               </Link>
-            </li>
+            </li> */}
 
             {/* Products Section */}
             <li className="sidebar-section-title">Products</li>

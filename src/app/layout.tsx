@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
         <ClientInitializer />
         <Header />
         {children}
