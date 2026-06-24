@@ -23,8 +23,8 @@ const mapBackendToFrontend = (job: any): AdminJob => ({
   dept: job.department,
   location: job.location,
   type: job.type === "FULL_TIME" ? "Full Time" :
-        job.type === "PART_TIME" ? "Part Time" :
-        job.type === "CONTRACT" ? "Contract" : "Internship",
+    job.type === "PART_TIME" ? "Part Time" :
+      job.type === "CONTRACT" ? "Contract" : "Internship",
   exp: job.experience,
   status: job.status === "PUBLISHED" ? "Active" : "Closed",
   description: job.description || "",
@@ -43,8 +43,8 @@ const mapFrontendToBackend = (
   department: dept,
   location,
   type: type === "Full Time" ? "FULL_TIME" :
-        type === "Part Time" ? "PART_TIME" :
-        type === "Contract" ? "CONTRACT" : "INTERNSHIP",
+    type === "Part Time" ? "PART_TIME" :
+      type === "Contract" ? "CONTRACT" : "INTERNSHIP",
   experience: exp,
   status: status === "Active" ? "PUBLISHED" : "CLOSED",
   description: description || null,
@@ -62,7 +62,7 @@ export default function JobList() {
 
   // Form states
   const [title, setTitle] = useState("");
-  const [dept, setDept] = useState("Product & Innovation");
+  const [dept, setDept] = useState("");
   const [location, setLocation] = useState("Mumbai, India");
   const [type, setType] = useState("Full Time");
   const [exp, setExp] = useState("");
@@ -127,7 +127,7 @@ export default function JobList() {
   const handleCreateOpen = () => {
     setEditingItem(null);
     setTitle("");
-    setDept("Product & Innovation");
+    setDept("");
     setLocation("Mumbai, India");
     setType("Full Time");
     setExp("1-3 yrs");
@@ -220,9 +220,8 @@ export default function JobList() {
       accessor: "status",
       render: (row) => (
         <span
-          className={`admin-badge ${
-            row.status === "Active" ? "admin-badge-success" : "admin-badge-danger"
-          }`}
+          className={`admin-badge ${row.status === "Active" ? "admin-badge-success" : "admin-badge-danger"
+            }`}
         >
           {row.status === "Active" ? "Active" : "Closed"}
         </span>
@@ -294,17 +293,14 @@ export default function JobList() {
           <div className="admin-form-row">
             <div className="admin-form-group">
               <label className="admin-label">Department</label>
-              <select
-                className="admin-select"
+              <input
+                type="text"
+                className="admin-input"
                 value={dept}
                 onChange={(e) => setDept(e.target.value)}
-              >
-                <option value="Product & Innovation">Product & Innovation</option>
-                <option value="Marketing & Growth">Marketing & Growth</option>
-                <option value="Sales & Retail">Sales & Retail</option>
-                <option value="Operations & Quality">Operations & Quality</option>
-                <option value="Finance & Admin">Finance & Admin</option>
-              </select>
+                placeholder="e.g. Sales, Marketing, HR, Engineering"
+                required
+              />
             </div>
 
             <div className="admin-form-group">
@@ -338,7 +334,7 @@ export default function JobList() {
             </div>
 
             <div className="admin-form-group">
-              <label className="admin-label">Required Experience *</label>
+              <label className="admin-label">Required Exper`ience *</label>
               <input
                 type="text"
                 className="admin-input"
@@ -478,7 +474,7 @@ export default function JobList() {
                             textDecoration: "none"
                           }}
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></svg>
                           Open Resume
                         </a>
                       </td>
@@ -493,13 +489,13 @@ export default function JobList() {
                             borderRadius: "6px",
                             border: "1px solid var(--admin-border)",
                             background: app.status === "REJECTED" ? "#ffebee" :
-                                        app.status === "HIRED" ? "#e8f5e9" :
-                                        app.status === "SHORTLISTED" ? "#e3f2fd" :
-                                        app.status === "UNDER_REVIEW" ? "#fff3e0" : "#eceff1",
+                              app.status === "HIRED" ? "#e8f5e9" :
+                                app.status === "SHORTLISTED" ? "#e3f2fd" :
+                                  app.status === "UNDER_REVIEW" ? "#fff3e0" : "#eceff1",
                             color: app.status === "REJECTED" ? "#c62828" :
-                                   app.status === "HIRED" ? "#2e7d32" :
-                                   app.status === "SHORTLISTED" ? "#1565c0" :
-                                   app.status === "UNDER_REVIEW" ? "#ef6c00" : "#37474f",
+                              app.status === "HIRED" ? "#2e7d32" :
+                                app.status === "SHORTLISTED" ? "#1565c0" :
+                                  app.status === "UNDER_REVIEW" ? "#ef6c00" : "#37474f",
                             fontWeight: "600",
                             cursor: "pointer"
                           }}
@@ -517,7 +513,7 @@ export default function JobList() {
               </table>
             </div>
           )}
-          
+
           <div className="admin-modal-footer" style={{ padding: "16px 0 0 0", borderTop: "1px solid var(--admin-border)", marginTop: "24px" }}>
             <button
               type="button"
