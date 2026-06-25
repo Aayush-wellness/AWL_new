@@ -448,7 +448,7 @@ export default function PressReleaseList() {
                 placeholder="https://..."
               />
               <div style={{ marginTop: "6px", display: "flex", alignItems: "center", gap: "8px" }}>
-                <label 
+                <label
                   style={{
                     display: "inline-block",
                     padding: "6px 12px",
@@ -489,7 +489,7 @@ export default function PressReleaseList() {
                 placeholder="https://..."
               />
               <div style={{ marginTop: "6px", display: "flex", alignItems: "center", gap: "8px" }}>
-                <label 
+                <label
                   style={{
                     display: "inline-block",
                     padding: "6px 12px",
@@ -501,7 +501,7 @@ export default function PressReleaseList() {
                     fontWeight: 600,
                   }}
                 >
-                  {isPdfUploading ? "Uploading..." : "Upload PDF to Shopify"}
+                  {isPdfUploading ? "Uploading..." : "Upload PDF"}
                   <input
                     type="file"
                     accept="application/pdf"
