@@ -460,7 +460,7 @@ export default function PressReleaseList() {
                     fontWeight: 600,
                   }}
                 >
-                  {isImageUploading ? "Uploading..." : "Upload Image to Shopify"}
+                  {isImageUploading ? "Uploading..." : "Upload Image"}
                   <input
                     type="file"
                     accept="image/*"
