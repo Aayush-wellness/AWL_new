@@ -40,18 +40,10 @@ const BEYOND_ITEMS = [
 
 export function BuildingFuture() {
   const [activeId, setActiveId] = useState("Accelerator");
-  const [imgOpacity, setImgOpacity] = useState(1);
 
   const handleTabClick = (id: string) => {
-    if (id === activeId) return;
-    setImgOpacity(0);
-    setTimeout(() => {
-      setActiveId(id);
-      setImgOpacity(1);
-    }, 280);
+    setActiveId(id);
   };
-
-  const activeItem = BEYOND_ITEMS.find((item) => item.id === activeId)!;
 
   return (
     <section id="beyond">
@@ -59,11 +51,14 @@ export function BuildingFuture() {
       <div className="beyond-left reveal">
         <SectionTag num="03" label="Beyond Products" theme="light" variant="beyond" />
         <div className="beyond-img">
-          <img
-            src={activeItem.image}
-            alt={activeItem.title}
-            style={{ opacity: imgOpacity, transition: "opacity 0.28s ease" }}
-          />
+          {BEYOND_ITEMS.map((item) => (
+            <img
+              key={item.id}
+              src={item.image}
+              alt={item.title}
+              className={activeId === item.id ? "active" : ""}
+            />
+          ))}
         </div>
       </div>
 
@@ -82,28 +77,23 @@ export function BuildingFuture() {
                 className={`beyond-item ${isOpen ? "accordion-open" : ""}`}
                 onClick={() => handleTabClick(item.id)}
               >
-                {isOpen ? (
-                  /* Open state: 2-col - title left, body right */
-                  <div className="beyond-item-open-row">
-                    <span className="beyond-item-title">{item.title}</span>
-                    <div className="beyond-item-body">
-                      <p className="beyond-item-desc">{item.description}</p>
-                      <a href={item.link} className="beyond-item-read">
-                        Read More <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                          <path d="M16.9706 24.0415L24.0416 16.9705L16.9706 9.89941M24.0416 16.9705H9.89949" stroke="#050505" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </a>
-                    </div>
+                <span className="beyond-item-arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                    <path d="M16.9706 24.0415L24.0416 16.9705L16.9706 9.89941M24.0416 16.9705H9.89949" stroke="#050505" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+
+                <div className="beyond-item-open-row">
+                  <span className="beyond-item-title">{item.title}</span>
+                  <div className="beyond-item-body">
+                    <p className="beyond-item-desc">{item.description}</p>
+                    <a href={item.link} className="beyond-item-read">
+                      Read More <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <path d="M16.9706 24.0415L24.0416 16.9705L16.9706 9.89941M24.0416 16.9705H9.89949" stroke="#050505" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
                   </div>
-                ) : (
-                  /* Closed state: title full-width with arrow */
-                  <div className="beyond-item-header">
-                    <span className="beyond-item-title">{item.title}</span>
-                    <span className="beyond-item-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
-                      <path d="M16.9706 24.0415L24.0416 16.9705L16.9706 9.89941M24.0416 16.9705H9.89949" stroke="#050505" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg></span>
-                  </div>
-                )}
+                </div>
               </div>
             );
           })}

@@ -21,6 +21,7 @@ const PRODUCTS = [
       "Preventive wellness formulations focused on supporting long-term health, lifestyle balance, metabolic wellness, and daily nutritional care.",
     tags: ["Daily Wellness", "Metabolic Support", "Liver Care", "Lifestyle Health"],
     link: "#",
+    objectPosition: "top",
   },
   {
     id: 3,
@@ -171,7 +172,11 @@ export function ProductCategories() {
           <div key={product.id} className="product-card reveal">
             <div className="product-img">
               <div className="product-img-inner">
-                <img src={product.image} alt={product.name} />
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  style={product.objectPosition ? { objectPosition: product.objectPosition } : undefined}
+                />
               </div>
             </div>
             <div className="product-body">
