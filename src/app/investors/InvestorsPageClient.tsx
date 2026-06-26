@@ -1,29 +1,51 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { SectionTag } from "@/components/ui/SectionTag";
 import "./investors.css";
 import { INVESTOR_CATEGORIES, type DocItem } from "./data/investorDocuments";
+import { apiClient } from "@/utils/apiClient";
 
 export function InvestorsPageClient() {
+  const [categories, setCategories] = useState<any[]>(INVESTOR_CATEGORIES);
   const [activeCategory, setActiveCategory] = useState(INVESTOR_CATEGORIES[0].id);
   const [expandedMobileCategory, setExpandedMobileCategory] = useState<string | null>(INVESTOR_CATEGORIES[0].id);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const res = await apiClient.get<any[]>("/public/investors");
+        if (res.success && res.data && res.data.length > 0) {
+          setCategories(res.data);
+          setActiveCategory(res.data[0].id);
+          setExpandedMobileCategory(res.data[0].id);
+        }
+      } catch (err) {
+        console.error("Failed to load live investor documents, falling back to static:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadData();
+  }, []);
 
   const currentCategory = useMemo(
-    () => INVESTOR_CATEGORIES.find((cat) => cat.id === activeCategory) || INVESTOR_CATEGORIES[0],
-    [activeCategory]
+    () => categories.find((cat) => cat.id === activeCategory) || categories[0],
+    [categories, activeCategory]
   );
 
   const filterDocs = (docs: DocItem[]) => {
+    if (!docs) return [];
     if (!searchQuery.trim()) return docs;
     const q = searchQuery.toLowerCase();
     return docs.filter((doc) => doc.name.toLowerCase().includes(q));
   };
 
   const desktopDocs = useMemo(
-    () => filterDocs(currentCategory.documents),
-    [currentCategory, searchQuery]
+    () => filterDocs(currentCategory?.documents),
+    [currentCategory, searchQuery, categories]
   );
 
   const PDFIcon = () => (
@@ -84,13 +106,16 @@ export function InvestorsPageClient() {
 
         {/* ================= DESKTOP VIEW ================= */}
         <aside className="investors-sidebar">
-          {INVESTOR_CATEGORIES.map((cat) => {
+          {categories.map((cat) => {
             const isActive = cat.id === activeCategory;
             return (
               <button
                 key={cat.id}
                 className={`sidebar-item ${isActive ? "active" : ""}`}
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => {
+                  setActiveCategory(cat.id);
+                  setSearchQuery("");
+                }}
                 title={cat.name}
               >
                 {cat.name}
@@ -102,12 +127,14 @@ export function InvestorsPageClient() {
         {/* Right Main Screen Panel */}
         <section className="investors-content">
           <div className="investors-header-block">
-            <h1 className="investors-category-title">{currentCategory.name}</h1>
-            <span className="investors-doc-count">{currentCategory.documents.length} document{currentCategory.documents.length !== 1 ? "s" : ""}</span>
+            <h1 className="investors-category-title">{currentCategory?.name || ""}</h1>
+            <span className="investors-doc-count">
+              {(currentCategory?.documents || []).length} document{(currentCategory?.documents || []).length !== 1 ? "s" : ""}
+            </span>
           </div>
 
           {/* Investor Grievance Info Cards */}
-          {currentCategory.id === "investor-grievance" && (
+          {(currentCategory?.slug === "investor-grievance" || currentCategory?.id === "investor-grievance") && (
             <div className="grievance-cards-grid" style={{ marginBottom: "40px" }}>
               <div className="grievance-card">
                 <h3 className="grievance-card-header">Grievance Redressal Officer</h3>
@@ -222,7 +249,7 @@ export function InvestorsPageClient() {
           </div>
 
           <div className="accordion-list">
-            {INVESTOR_CATEGORIES.map((cat) => {
+            {categories.map((cat) => {
               const isExpanded = expandedMobileCategory === cat.id;
               const mobileDocs = filterDocs(cat.documents);
 
@@ -240,7 +267,7 @@ export function InvestorsPageClient() {
 
                   {isExpanded && (
                     <div className="accordion-content">
-                      {cat.id === "investor-grievance" && (
+                      {(cat.slug === "investor-grievance" || cat.id === "investor-grievance") && (
                         <div className="grievance-cards-grid" style={{ marginBottom: "24px" }}>
                           <div className="grievance-card">
                             <h3 className="grievance-card-header">Grievance Redressal Officer</h3>
