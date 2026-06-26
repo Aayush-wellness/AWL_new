@@ -238,6 +238,7 @@ export const INVESTOR_CATEGORIES: CategoryData[] = [
       { id: "twc-25", name: "Trading Window Closure - 31.03.2017 (AFR)", url: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Trading_Window_Closure_31.03.2020_AFR.pdf?v=1724674224" },
       { id: "twc-26", name: "Trading Window Closure - 30.09.2016 (UFR)", url: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Trading_Window_Closure_30.09.2019_UFR.pdf?v=1724674222" },
       { id: "twc-27", name: "Trading Window Closure - 30.06.2016 (UFR)", url: "https://cdn.shopify.com/s/files/1/0674/9614/9171/files/Trading_Window_Closure_30.06.2019_UFR.pdf?v=1724674224" },
+      { id: "twc-28", name: "Trading Window Closure - 30.06.2026 (AFR)", url: "https://cdn.shopify.com/s/files/1/0653/9830/9053/files/TWC_30.06.2026.pdf?v=1782463796" },
     ],
   },
 
