@@ -923,6 +923,27 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Custom Scrollbar for activity list */
+.admin-activity-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-activity-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-activity-list::-webkit-scrollbar-thumb {
+  background: var(--admin-border);
+  border-radius: 4px;
+}
+
+.admin-activity-list::-webkit-scrollbar-thumb:hover {
+  background: var(--admin-lime, #4f7c0d);
 }
 
 .admin-activity-item {

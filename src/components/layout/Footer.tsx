@@ -72,7 +72,9 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="footer-wordmark">Aayush Wellness</div>
+      <div className="footer-wordmark">
+        Aayush<br className="footer-wordmark-br" /> Wellness
+      </div>
 
       <div className="footer-bottom">
         <p className="footer-copy">

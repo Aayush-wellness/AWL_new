@@ -6,6 +6,7 @@ import AdminModal from "../AdminModal";
 import AdminDeleteConfirm from "../AdminDeleteConfirm";
 import { apiClient } from "@/utils/apiClient";
 import { uploadFile } from "@/utils/upload";
+import { useAdminToasts, AdminToasts } from "../AdminToast";
 
 interface PressRelease {
   id: string;
@@ -78,6 +79,7 @@ export default function PressReleaseList() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const { toasts, showToast } = useAdminToasts();
 
   // Shopify file upload states
   const [isImageUploading, setIsImageUploading] = useState(false);
@@ -219,14 +221,17 @@ export default function PressReleaseList() {
     try {
       if (editingItem) {
         await apiClient.patch(`/pr/${editingItem.id}`, payload);
+        showToast("Press release updated successfully!", "success");
       } else {
         await apiClient.post("/pr", payload);
+        showToast("Press release created successfully!", "success");
       }
       setIsFormOpen(false);
       await fetchPressReleases();
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Something went wrong. Please try again.";
       setFormError(message);
+      showToast(message, "error");
     } finally {
       setIsSubmitting(false);
     }
@@ -244,12 +249,14 @@ export default function PressReleaseList() {
     setIsDeleting(true);
     try {
       await apiClient.delete(`/pr/${deletingItem.id}`);
+      showToast(`Press release "${deletingItem.title}" deleted successfully!`, "success");
       setIsDeleteOpen(false);
       setDeletingItem(null);
       await fetchPressReleases();
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Failed to delete.";
       setListError(message);
+      showToast(message, "error");
       setIsDeleteOpen(false);
     } finally {
       setIsDeleting(false);
@@ -591,6 +598,7 @@ export default function PressReleaseList() {
         onConfirm={handleDeleteConfirm}
         itemName={deletingItem?.title ?? ""}
       />
+      <AdminToasts toasts={toasts} />
     </div>
   );
 }

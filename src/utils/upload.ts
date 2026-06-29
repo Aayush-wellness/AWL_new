@@ -5,7 +5,7 @@
  * @param file The File object from an input element.
  * @returns Promise resolving to the permanent Cloudinary CDN URL.
  */
-export async function uploadFile(file: File): Promise<string> {
+export async function uploadFile(file: File, endpoint: string = "/pr/upload"): Promise<string> {
   const formData = new FormData();
   formData.append("file", file);
 
@@ -17,7 +17,7 @@ export async function uploadFile(file: File): Promise<string> {
 
   const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
-  const res = await fetch(`${BASE_URL}/pr/upload`, {
+  const res = await fetch(`${BASE_URL}${endpoint}`, {
     method: "POST",
     headers,
     body: formData,

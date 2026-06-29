@@ -5,6 +5,7 @@ import AdminTable, { TableColumn } from "../AdminTable";
 import AdminModal from "../AdminModal";
 import AdminDeleteConfirm from "../AdminDeleteConfirm";
 import { apiClient } from "@/utils/apiClient";
+import { useAdminToasts, AdminToasts } from "../AdminToast";
 
 interface ContactInquiry {
   id: string;
@@ -38,6 +39,7 @@ export default function ContactList() {
   const [selectedItem, setSelectedItem] = useState<ContactInquiry | null>(null);
   const [deletingItem, setDeletingItem] = useState<ContactInquiry | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const { toasts, showToast } = useAdminToasts();
 
   const fetchContactInquiries = useCallback(async () => {
     setIsLoading(true);
@@ -85,11 +87,12 @@ export default function ContactList() {
     try {
       await apiClient.delete(`/contact/${deletingItem.id}`);
       setData((prev) => prev.filter((item) => item.id !== deletingItem.id));
+      showToast(`Inquiry from "${deletingItem.fullName}" deleted successfully!`, "success");
       setIsDeleteOpen(false);
       setDeletingItem(null);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Failed to delete submission.";
-      alert(`Error: ${msg}`);
+      showToast(msg, "error");
     } finally {
       setIsDeleting(false);
     }
@@ -300,6 +303,7 @@ export default function ContactList() {
         onConfirm={handleDeleteConfirm}
         itemName={deletingItem?.fullName || ""}
       />
+      <AdminToasts toasts={toasts} />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import AdminTable, { TableColumn } from "../AdminTable";
 import AdminModal from "../AdminModal";
 import AdminDeleteConfirm from "../AdminDeleteConfirm";
 import { apiClient } from "@/utils/apiClient";
+import { useAdminToasts, AdminToasts } from "../AdminToast";
 
 interface AdminJob {
   id: string;
@@ -59,6 +60,7 @@ export default function JobList() {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<AdminJob | null>(null);
   const [deletingItem, setDeletingItem] = useState<AdminJob | null>(null);
+  const { toasts, showToast } = useAdminToasts();
 
   // Form states
   const [title, setTitle] = useState("");
@@ -157,13 +159,15 @@ export default function JobList() {
       const payload = mapFrontendToBackend(title, dept, location, type, exp, status, description);
       if (editingItem) {
         await apiClient.patch(`/jobs/${editingItem.id}`, payload);
+        showToast("Job posting updated successfully!", "success");
       } else {
         await apiClient.post("/jobs", payload);
+        showToast("Job posting created successfully!", "success");
       }
       setIsFormOpen(false);
       await fetchJobs();
     } catch (err: any) {
-      alert(err.message || "Failed to save job posting.");
+      showToast(err.message || "Failed to save job posting.", "error");
     } finally {
       setIsSubmitting(false);
     }
@@ -178,11 +182,12 @@ export default function JobList() {
     if (!deletingItem) return;
     try {
       await apiClient.delete(`/jobs/${deletingItem.id}`);
+      showToast(`Job posting "${deletingItem.title}" deleted successfully!`, "success");
       setIsDeleteOpen(false);
       setDeletingItem(null);
       await fetchJobs();
     } catch (err: any) {
-      alert(err.message || "Failed to delete job posting.");
+      showToast(err.message || "Failed to delete job posting.", "error");
     }
   };
 
@@ -529,6 +534,7 @@ export default function JobList() {
           </div>
         </div>
       </AdminModal>
+      <AdminToasts toasts={toasts} />
     </div>
   );
 }

@@ -5,6 +5,8 @@ import AdminTable, { TableColumn } from "../AdminTable";
 import AdminModal from "../AdminModal";
 import AdminDeleteConfirm from "../AdminDeleteConfirm";
 import { apiClient } from "@/utils/apiClient";
+import { uploadFile } from "@/utils/upload";
+import { useAdminToasts, AdminToasts } from "../AdminToast";
 
 interface Category {
   id: string;
@@ -39,6 +41,7 @@ export default function InvestorsManager() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toasts, showToast } = useAdminToasts();
 
   // Modal open states
   const [isCategoryFormOpen, setIsCategoryFormOpen] = useState(false);
@@ -61,6 +64,10 @@ export default function InvestorsManager() {
   const [docName, setDocName] = useState("");
   const [docUrl, setDocUrl] = useState("");
   const [docCategoryId, setDocCategoryId] = useState("");
+
+  // Upload states
+  const [isDocUploading, setIsDocUploading] = useState(false);
+  const [docUploadError, setDocUploadError] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
     setIsLoading(true);
@@ -123,13 +130,15 @@ export default function InvestorsManager() {
 
       if (editingCategory) {
         await apiClient.patch(`/investors/categories/${editingCategory.id}`, payload);
+        showToast("Category updated successfully!", "success");
       } else {
         await apiClient.post("/investors/categories", payload);
+        showToast("Category created successfully!", "success");
       }
       setIsCategoryFormOpen(false);
       await fetchData();
     } catch (err: any) {
-      alert(err.message || "Failed to save category.");
+      showToast(err.message || "Failed to save category.", "error");
     } finally {
       setIsSubmitting(false);
     }
@@ -141,6 +150,7 @@ export default function InvestorsManager() {
     setDocName("");
     setDocUrl("");
     setDocCategoryId(categories.length > 0 ? categories[0].id : "");
+    setDocUploadError(null);
     setIsDocumentFormOpen(true);
   };
 
@@ -149,7 +159,23 @@ export default function InvestorsManager() {
     setDocName(doc.name);
     setDocUrl(doc.url);
     setDocCategoryId(doc.categoryId);
+    setDocUploadError(null);
     setIsDocumentFormOpen(true);
+  };
+
+  const handleDocFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setIsDocUploading(true);
+    setDocUploadError(null);
+    try {
+      const url = await uploadFile(file, "/investors/upload");
+      setDocUrl(url);
+    } catch (err: any) {
+      setDocUploadError(err.message || "Failed to upload document.");
+    } finally {
+      setIsDocUploading(false);
+    }
   };
 
   const handleDocumentSubmit = async (e: React.FormEvent) => {
@@ -166,13 +192,15 @@ export default function InvestorsManager() {
 
       if (editingDocument) {
         await apiClient.patch(`/investors/documents/${editingDocument.id}`, payload);
+        showToast("Document updated successfully!", "success");
       } else {
         await apiClient.post("/investors/documents", payload);
+        showToast("Document saved successfully!", "success");
       }
       setIsDocumentFormOpen(false);
       await fetchData();
     } catch (err: any) {
-      alert(err.message || "Failed to save document.");
+      showToast(err.message || "Failed to save document.", "error");
     } finally {
       setIsSubmitting(false);
     }
@@ -191,14 +219,16 @@ export default function InvestorsManager() {
     try {
       if (deleteType === "category") {
         await apiClient.delete(`/investors/categories/${deletingItem.id}`);
+        showToast(`Category "${deletingItem.name}" deleted successfully!`, "success");
       } else {
         await apiClient.delete(`/investors/documents/${deletingItem.id}`);
+        showToast(`Document "${deletingItem.name}" deleted successfully!`, "success");
       }
       setIsDeleteOpen(false);
       setDeletingItem(null);
       await fetchData();
     } catch (err: any) {
-      alert(err.message || `Failed to delete ${deleteType}.`);
+      showToast(err.message || `Failed to delete ${deleteType}.`, "error");
     }
   };
 
@@ -444,14 +474,39 @@ export default function InvestorsManager() {
 
           <div className="admin-form-group">
             <label className="admin-label">Document File URL (Shopify/CDN) *</label>
-            <input
-              type="url"
-              className="admin-input"
-              required
-              value={docUrl}
-              onChange={(e) => setDocUrl(e.target.value)}
-              placeholder="https://cdn.shopify.com/s/files/..."
-            />
+            <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+              <input
+                type="text"
+                className="admin-input"
+                required
+                value={docUrl}
+                onChange={(e) => setDocUrl(e.target.value)}
+                placeholder="https://cdn.shopify.com/s/files/... or Cloudinary URL"
+                style={{ flex: 1 }}
+              />
+              <div style={{ position: "relative" }}>
+                <input
+                  type="file"
+                  accept=".pdf,.doc,.docx,.xls,.xlsx,image/*"
+                  onChange={handleDocFileUpload}
+                  style={{ display: "none" }}
+                  id="investor-document-upload"
+                  disabled={isDocUploading}
+                />
+                <label
+                  htmlFor="investor-document-upload"
+                  className="admin-btn admin-btn-secondary"
+                  style={{ display: "inline-block", cursor: isDocUploading ? "not-allowed" : "pointer" }}
+                >
+                  {isDocUploading ? "Uploading..." : "Upload File"}
+                </label>
+              </div>
+            </div>
+            {docUploadError && (
+              <span style={{ color: "#ef5350", fontSize: "12px", marginTop: "4px", display: "block" }}>
+                {docUploadError}
+              </span>
+            )}
           </div>
 
           <div className="admin-form-group">
@@ -491,6 +546,7 @@ export default function InvestorsManager() {
         onConfirm={handleDeleteConfirm}
         itemName={deletingItem?.name || ""}
       />
+      <AdminToasts toasts={toasts} />
     </div>
   );
 }

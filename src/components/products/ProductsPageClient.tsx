@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { PRODUCTS_DATA, HERBAL_MASALA_FEATURES, HERBAL_MASALA_INGREDIENTS, Product } from "./productsData";
+import { apiClient } from "@/utils/apiClient";
 
 // Gummy Bottle SVG Placeholder
 const GummyPlaceholder = () => (
@@ -70,9 +71,11 @@ const ShilajitPlaceholder = () => (
 );
 
 export function ProductsPageClient() {
+  const [categories, setCategories] = useState<any[]>(PRODUCTS_DATA);
   const [activeTab, setActiveTab] = useState("wellness-gummies");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [activeModalImage, setActiveModalImage] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(true);
   const [imgStyle, setImgStyle] = useState<React.CSSProperties>({
     height: "120%",
     width: "auto",
@@ -87,7 +90,7 @@ export function ProductsPageClient() {
   });
 
   // Reset image style when active modal image changes to prevent visual layout flicker
-  React.useEffect(() => {
+  useEffect(() => {
     setImgStyle({
       height: "120%",
       width: "auto",
@@ -101,6 +104,25 @@ export function ProductsPageClient() {
       zIndex: 2,
     });
   }, [activeModalImage]);
+
+  // Fetch products from backend
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const res = await apiClient.get<any[]>("/public/products");
+        if (res.success && res.data && res.data.length > 0) {
+          setCategories(res.data);
+          const firstTab = res.data[0].slug || res.data[0].id;
+          setActiveTab(firstTab);
+        }
+      } catch (err) {
+        console.error("Failed to load live products, falling back to static:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadData();
+  }, []);
 
   // Canvas bounds calculator to auto-compensate for transparent margins of PNG assets
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -177,7 +199,7 @@ export function ProductsPageClient() {
   };
 
   // Get active tab data
-  const currentTab = PRODUCTS_DATA.find((tab) => tab.id === activeTab) || PRODUCTS_DATA[0];
+  const currentTab = categories.find((tab) => (tab.slug || tab.id) === activeTab) || categories[0];
 
   // Modal control handlers
   const handleOpenDetails = (product: Product) => {
@@ -218,7 +240,7 @@ export function ProductsPageClient() {
   };
 
   // Close modal on Escape key
-  React.useEffect(() => {
+  useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         handleCloseDetails();
@@ -362,11 +384,11 @@ export function ProductsPageClient() {
       {/* Tabs Navigation */}
       <div className="products-tabs-bar">
         <div className="tabs-nav-wrapper">
-          {PRODUCTS_DATA.map((tab) => (
+          {categories.map((tab) => (
             <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`tab-btn ${activeTab === tab.id ? "active" : ""}`}
+              key={tab.slug || tab.id}
+              onClick={() => setActiveTab(tab.slug || tab.id)}
+              className={`tab-btn ${activeTab === (tab.slug || tab.id) ? "active" : ""}`}
             >
               {tab.name}
             </button>
@@ -386,7 +408,7 @@ export function ProductsPageClient() {
 
         {/* Product Cards Grid */}
         <div className={`products-cards-grid grid-${activeTab}`}>
-          {currentTab.products.map((product) => {
+          {currentTab.products?.map((product: Product) => {
             const hasImage = product.image && product.image.trim() !== "";
             const hasDetails = activeTab !== "herbal-masala" && activeTab !== "shilajit-drops";
             return (
@@ -616,6 +638,7 @@ export function ProductsPageClient() {
                       className="modal-actual-img"
                       style={imgStyle}
                       onLoad={handleImageLoad}
+                      crossOrigin={activeModalImage.startsWith("http") ? "anonymous" : undefined}
                     />
                   ) : (
                     <div className="modal-placeholder-icon">
